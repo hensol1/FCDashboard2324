@@ -75,15 +75,13 @@ nav ul li a:hover {
 /* Table Styles */
 table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 4px;
-    font-size: 12px;
+    border-collapse: collapse;
+    text-align: center;
 }
 
 th, td {
     padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
 }
 
 th {
@@ -208,4 +206,30 @@ select {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }

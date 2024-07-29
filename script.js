@@ -1,6 +1,16 @@
 let gpsData = [];
 let fixturesData = {};
 let playerData = [];
+let playerNameMapping = {};
+
+function createPlayerNameMapping() {
+    playerNameMapping = {}; // Reset the mapping
+    playerData.forEach(player => {
+        playerNameMapping[player.Player] = player.playerFullName;
+    });
+    console.log('Player name mapping created:', playerNameMapping);
+}
+
 
 const shortNameMapping = {
     'M. Tel Aviv': 'Maccabi Tel Aviv',
@@ -35,6 +45,7 @@ const logoMap = {
 };
 
 function cleanTeamName(teamName) {
+    if (!teamName) return ''; // Return empty string if teamName is undefined or null
     // Remove standings and extra spaces
     return teamName.replace(/^\(\d+\.\)\s*/, '').replace(/\s*\(\d+\.\)$/, '').trim();
 }
@@ -122,12 +133,99 @@ function loadGPSData() {
         .then(([gpsJson, playerJson]) => {
             gpsData = gpsJson;
             playerData = playerJson;
+            createPlayerNameMapping(); // Call this here
+            console.log('GPS Data loaded:', gpsData);
+            console.log('Player Data loaded:', playerData);
             displayTopPlayers();
         })
         .catch(error => console.error('Error loading data:', error));
 }
 
-async function displayTopPlayers() {
+function calculatePlayerAverages(data) {
+    const playerAverages = {};
+    data.forEach(entry => {
+        if (!playerAverages[entry.Player]) {
+            playerAverages[entry.Player] = {
+                Team: entry.Team,
+                TotalDistance: 0,
+                HsrDistance: 0,
+                SprintDistance: 0,
+                MatchCount: 0
+            };
+        }
+        playerAverages[entry.Player].TotalDistance += entry.TotalDistance;
+        playerAverages[entry.Player].HsrDistance += entry.HsrDistance;
+        playerAverages[entry.Player].SprintDistance += entry.SprintDistance;
+        playerAverages[entry.Player].MatchCount++;
+    });
+
+    Object.keys(playerAverages).forEach(player => {
+        const avg = playerAverages[player];
+        if (avg.MatchCount >= 10) {  // Only calculate average for players with 10 or more matches
+            avg.TotalDistance = avg.TotalDistance / avg.MatchCount;
+            avg.HsrDistance = avg.HsrDistance / avg.MatchCount;
+            avg.SprintDistance = avg.SprintDistance / avg.MatchCount;
+        } else {
+            delete playerAverages[player];  // Remove players with less than 10 matches
+        }
+    });
+
+    return playerAverages;
+}
+
+function calculateTeamStats(data) {
+    const teamStats = {};
+    data.forEach(entry => {
+        const key = `${entry.Team}-${entry.Matchday}`;
+        if (!teamStats[key]) {
+            teamStats[key] = {
+                Team: entry.Team,
+                Matchday: entry.Matchday,
+                Opponent: entry.Opponent,
+                TotalDistance: 0,
+                HsrDistance: 0,
+                SprintDistance: 0,
+                PlayerCount: 0
+            };
+        }
+        teamStats[key].TotalDistance += entry.TotalDistance;
+        teamStats[key].HsrDistance += entry.HsrDistance;
+        teamStats[key].SprintDistance += entry.SprintDistance;
+        teamStats[key].PlayerCount++;
+    });
+    return Object.values(teamStats);
+}
+
+function calculateTeamAverages(teamStats) {
+    const teamAverages = {};
+    teamStats.forEach(stat => {
+        if (!stat.Team) return; // Skip if Team is undefined
+        if (!teamAverages[stat.Team]) {
+            teamAverages[stat.Team] = {
+                TotalDistance: 0,
+                HsrDistance: 0,
+                SprintDistance: 0,
+                MatchCount: 0
+            };
+        }
+        teamAverages[stat.Team].TotalDistance += stat.TotalDistance || 0;
+        teamAverages[stat.Team].HsrDistance += stat.HsrDistance || 0;
+        teamAverages[stat.Team].SprintDistance += stat.SprintDistance || 0;
+        teamAverages[stat.Team].MatchCount++;
+    });
+
+    Object.keys(teamAverages).forEach(team => {
+        const avg = teamAverages[team];
+        avg.TotalDistance = avg.TotalDistance / avg.MatchCount;
+        avg.HsrDistance = avg.HsrDistance / avg.MatchCount;
+        avg.SprintDistance = avg.SprintDistance / avg.MatchCount;
+    });
+
+    return teamAverages;
+}
+
+function displayTopPlayers() {
+    console.log('displayTopPlayers function called');
     const categories = ['TotalDistance', 'HsrDistance', 'SprintDistance'];
     const categoryNames = {
         'TotalDistance': 'Total Distance',
@@ -135,56 +233,148 @@ async function displayTopPlayers() {
         'SprintDistance': 'Sprint Distance'
     };
 
-    for (const category of categories) {
-        const topPlayers = gpsData
-            .sort((a, b) => b[category] - a[category])
-            .slice(0, 5);
+    console.log('GPS Data:', gpsData);
+    const playerAverages = calculatePlayerAverages(gpsData);
+    const teamStats = calculateTeamStats(gpsData);
+    const teamAverages = calculateTeamAverages(teamStats);
 
-        let html = `<h3>${categoryNames[category]}</h3><table>
-            <tr>
-                <th>Player</th>
-                <th>Team</th>
-                <th>${categoryNames[category]}</th>
-                <th>Matchday</th>
-                <th>Opponent</th>
-            </tr>`;
-        
-        for (const player of topPlayers) {
-            const playerInfo = playerData.find(p => 
-                (p.Player === player.Player && p.teamName === player.Team) || 
-                (p.playerFullName === player.Player && p.teamName === player.Team) ||
-                (p.firstName && p.lastName && 
-                 player.Player.includes(p.firstName) && 
-                 player.Player.includes(p.lastName) && 
-                 p.teamName === player.Team)
-            );
-            
-            const playerFullName = playerInfo ? playerInfo.playerFullName : player.Player;
-            const playerImageFileName = playerFullName.replace(/ /g, '_') + '.webp';
-            const teamLogoUrl = await getTeamLogoUrl(player.Team);
-            
-        html += `<tr>
-            <td class="player-cell">
-                <div class="player-info">
-                    <img src="player-images/${playerImageFileName}" 
-                         alt="${playerFullName}" 
-                         class="player-image"
-                         onerror="this.onerror=null; this.src='player-images/default.webp';">
-                    <span class="player-name">${playerFullName}</span>
-                </div>
-            </td>
-            <td class="team-cell">
-                <img src="${teamLogoUrl}" alt="${player.Team} logo" class="team-logo-small">
-                <span class="team-name">${player.Team}</span>
-            </td>
-            <td>${player[category]}</td>
-            <td>${player.Matchday}</td>
-            <td>${player.Opponent}</td>
-        </tr>`;
+    console.log('Player Averages:', playerAverages);
+    console.log('Team Stats:', teamStats);
+    console.log('Team Averages:', teamAverages);
+
+    for (const category of categories) {
+        console.log(`Processing category: ${category}`);
+        displayCategoryData(category, categoryNames[category], gpsData, playerAverages, teamStats, teamAverages);
     }
 
+    // Add event listeners for tab buttons
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('Tab button clicked:', button.getAttribute('data-tab'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            button.classList.add('active');
+            document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+        });
+    });
+}
+
+function displayCategoryData(category, categoryName, gpsData, playerAverages, teamStats, teamAverages) {
+    console.log(`displayCategoryData called for ${category}`);
+    const playerMatchRecord = gpsData
+        .sort((a, b) => b[category] - a[category])
+        .slice(0, 5);
+
+    const playerBestAvg = Object.entries(playerAverages)
+        .sort((a, b) => b[1][category] - a[1][category])
+        .slice(0, 5);
+
+    const teamMatchRecord = teamStats
+        .sort((a, b) => b[category] - a[category])
+        .slice(0, 5);
+
+    const teamBestAvg = Object.entries(teamAverages)
+        .sort((a, b) => b[1][category] - a[1][category])
+        .slice(0, 5);
+
+    console.log(`${category} - Player Match Record:`, playerMatchRecord);
+    console.log(`${category} - Player Best Avg (10+ matches):`, playerBestAvg);
+    console.log(`${category} - Team Match Record:`, teamMatchRecord);
+    console.log(`${category} - Team Best Avg:`, teamBestAvg);
+
+    const tabContents = {
+        'player-match-record': createTable(playerMatchRecord, category, categoryName, 'Player'),
+        'player-best-avg': createTable(playerBestAvg, category, categoryName, 'Player', true),
+        'team-match-record': createTable(teamMatchRecord, category, categoryName, 'Team'),
+        'team-best-avg': createTable(teamBestAvg, category, categoryName, 'Team', true)
+    };
+
+    Object.entries(tabContents).forEach(([tabId, content]) => {
+        console.log(`Updating tab content for ${tabId}`);
+        const tab = document.getElementById(tabId);
+        if (!tab) {
+            console.error(`Tab element not found: ${tabId}`);
+            return;
+        }
+        const categoryDiv = tab.querySelector(`#${category.toLowerCase().replace('distance', '-distance')}`) || 
+                            document.createElement('div');
+        categoryDiv.id = `${category.toLowerCase().replace('distance', '-distance')}`;
+        categoryDiv.innerHTML = content;
+        if (!tab.contains(categoryDiv)) {
+            tab.appendChild(categoryDiv);
+        }
+    });
+}
+
+function createTable(data, category, categoryName, entityType, isAverage = false) {
+    console.log(`createTable called for ${category}, ${entityType}, isAverage: ${isAverage}`);
+    try {
+        let html = `<h3>${categoryName}</h3><table>`;
+        html += '<tr>';
+        html += `<th>${entityType}</th>`;
+        if (entityType === 'Player') {
+            html += '<th>Team</th>';
+        }
+        html += `<th>${categoryName}</th>`;
+        if (!isAverage) {
+            html += '<th>Matchday</th>';
+        }
+        if ((entityType === 'Player' && !isAverage) || (entityType === 'Team' && !isAverage)) {
+            html += '<th>Opponent</th>';
+        }
+        html += '</tr>';
+
+        for (const item of data) {
+            const entity = isAverage ? (item[0] || 'Unknown') : (item[entityType] || 'Unknown');
+            const team = isAverage ? (item[1] && item[1].Team ? item[1].Team : 'Unknown') : (item.Team || 'Unknown');
+            const value = isAverage ? (item[1] && item[1][category] ? item[1][category].toFixed(2) : 'N/A') : (item[category] || 'N/A');
+            const opponent = item.Opponent || 'N/A';
+            const matchCount = isAverage && entityType === 'Player' ? item[1].MatchCount : null;
+
+            html += '<tr>';
+            html += `<td class="${entityType.toLowerCase()}-cell">`;
+            html += `<div class="${entityType.toLowerCase()}-info">`;
+            
+            if (entityType === 'Player') {
+                const playerFullName = playerNameMapping[entity] || entity;
+                html += `<img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" ` +
+                        `alt="${playerFullName}" ` +
+                        `class="player-image" ` +
+                        `onerror="this.onerror=null; this.src='player-images/default.webp';">`;
+                html += `<span class="${entityType.toLowerCase()}-name">${entity}</span>`;
+            } else {
+                html += `<img src="${getTeamLogoUrl(entity)}" alt="${entity} logo" class="team-logo-small">`;
+                html += `<span class="team-name">${entity}</span>`;
+            }
+            html += '</div>';
+            html += '</td>';
+
+            if (entityType === 'Player') {
+                html += '<td class="team-cell">';
+                html += `<img src="${getTeamLogoUrl(team)}" alt="${team} logo" class="team-logo-small">`;
+                html += `<span class="team-name">${team}</span>`;
+                html += '</td>';
+            }
+
+            html += `<td>${value}${matchCount ? ` (${matchCount} matches)` : ''}</td>`;
+
+            if (!isAverage) {
+                html += `<td>${item.Matchday || 'N/A'}</td>`;
+            }
+
+            if ((entityType === 'Player' && !isAverage) || (entityType === 'Team' && !isAverage)) {
+                html += `<td>${opponent}</td>`;
+            }
+
+            html += '</tr>';
+        }
+
         html += '</table>';
-        document.getElementById(category.toLowerCase().replace('distance', '-distance')).innerHTML = html;
+        console.log('Generated HTML:', html);
+        return html;
+    } catch (error) {
+        console.error('Error in createTable:', error);
+        return `<p>Error generating table: ${error.message}</p>`;
     }
 }
 
@@ -218,27 +408,27 @@ async function updateStandings() {
             });
 
             let tableHtml = '<table><tr><th>Position</th><th>Club</th><th>Matches</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>+/-</th><th>Pts</th></tr>';
-    for (let index = 0; index < tableData.length; index++) {
-        const team = tableData[index];
-        const teamName = season === "24_25" ? team.Club_0 : team.Team;
-        const logoUrl = await getTeamLogoUrl(teamName);
-        
-        const highlightClass = index === 0 ? "highlight-green" : index >= tableData.length - 2 ? "highlight-red" : "";
-        tableHtml += `<tr class="${highlightClass}">
-            <td>${index + 1}</td>
-            <td class="team-cell">
-                <img src="${logoUrl}" alt="${teamName} logo" class="team-logo-small">
-                <span class="team-name">${teamName}</span>
-            </td>
-            <td>${season === "24_25" ? team.Matches : team.GM}</td>
-            <td>${team.W}</td>
-            <td>${team.D}</td>
-            <td>${team.L}</td>
-            <td>${season === "24_25" ? team.Goals : team.GF + ':' + team.GA}</td>
-            <td>${season === "24_25" ? team['+/-'] : team.GD}</td>
-            <td>${season === "24_25" ? team.Pts : team.P}</td>
-        </tr>`;
-    }
+            for (let index = 0; index < tableData.length; index++) {
+                const team = tableData[index];
+                const teamName = season === "24_25" ? team.Club_0 : team.Team;
+                const logoUrl = await getTeamLogoUrl(teamName);
+                
+                const highlightClass = index === 0 ? "highlight-green" : index >= tableData.length - 2 ? "highlight-red" : "";
+                tableHtml += `<tr class="${highlightClass}">
+                    <td>${index + 1}</td>
+                    <td class="team-cell">
+                        <img src="${logoUrl}" alt="${teamName} logo" class="team-logo-small">
+                        <span class="team-name">${teamName}</span>
+                    </td>
+                    <td>${season === "24_25" ? team.Matches : team.GM}</td>
+                    <td>${team.W}</td>
+                    <td>${team.D}</td>
+                    <td>${team.L}</td>
+                    <td>${season === "24_25" ? team.Goals : team.GF + ':' + team.GA}</td>
+                    <td>${season === "24_25" ? team['+/-'] : team.GD}</td>
+                    <td>${season === "24_25" ? team.Pts : team.P}</td>
+                </tr>`;
+            }
             tableHtml += '</table>';
             document.getElementById('content1').innerHTML = tableHtml;
         } else {
@@ -252,6 +442,8 @@ async function updateStandings() {
 
 
 function getTeamLogoUrl(team) {
+    if (!team) return 'team-logos/default_logo.webp'; // Return default logo if team is undefined
+
     const cleanedTeam = cleanTeamName(team);
     // Use the full name if available, otherwise use the original name
     const fullTeamName = shortNameMapping[cleanedTeam] || cleanedTeam;
@@ -259,23 +451,7 @@ function getTeamLogoUrl(team) {
     const logoFileName = fullTeamName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.webp';
     const logoUrl = `team-logos/${logoFileName}`;
     
-    return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(logoUrl);
-        img.onerror = () => {
-            // Try to find a flexible match
-            const flexibleMatch = Object.entries(logoMap).find(([key, value]) => 
-                fullTeamName.toLowerCase().includes(key.toLowerCase()) || 
-                key.toLowerCase().includes(fullTeamName.toLowerCase())
-            );
-            if (flexibleMatch) {
-                resolve(`team-logos/${flexibleMatch[1]}`);
-            } else {
-                console.log(`No logo found for team: ${fullTeamName}`);
-                resolve('team-logos/default_logo.webp');
-            }
-        };
-        img.src = logoUrl;
-    });
+    // Remove the Promise and just return the URL
+    return logoUrl;
 }
 // Make sure to define logoMap at the top of your file or import it from teams.js

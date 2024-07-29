@@ -43,14 +43,25 @@
         </div>
 
         <div class="right-column">
-            <div id="player-stats" class="section">
-                <h2>Top 5 Players</h2>
-                <div id="total-distance"></div>
-                <div id="hsr-distance"></div>
-                <div id="sprint-distance"></div>
-            </div>
-        </div>
+<div id="player-stats" class="section">
+  <h2>Top 5 Fitness Data</h2>
+  <div class="tabs">
+    <button class="tab-button active" data-tab="player-match-record">Player Match Record</button>
+    <button class="tab-button" data-tab="player-best-avg">Player Best Avg.</button>
+    <button class="tab-button" data-tab="team-match-record">Team Match Record</button>
+    <button class="tab-button" data-tab="team-best-avg">Team Best Avg.</button>
+  </div>
+  <div id="player-match-record" class="tab-content active">
+    <div id="total-distance"></div>
+    <div id="hsr-distance"></div>
+    <div id="sprint-distance"></div>
+  </div>
+  <div id="player-best-avg" class="tab-content"></div>
+  <div id="team-match-record" class="tab-content"></div>
+  <div id="team-best-avg" class="tab-content"></div>
+</div>
     </div>
+        </div>
 
     <script src="script.js"></script>
 </body>
