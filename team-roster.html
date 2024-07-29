@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Roster</title>
+    <link rel="stylesheet" href="teams_team-roster.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="teams.html">Teams</a></li>
+        </ul>
+    </nav>
+    <div class="team-header">
+        <div class="team-logo-container">
+            <img id="team-logo" src="team-logos/" alt="Team Logo" class="team-logo">
+        </div>
+        <h1 id="team-name"></h1>
+    </div>
+    <div class="tabs">
+        <button class="tab-button active" data-tab="roster">Roster</button>
+        <button class="tab-button" data-tab="team-stats">Team Stats</button>
+        <button class="tab-button" data-tab="player-stats">Player Stats</button>
+    </div>
+    <div id="tab-content">
+        <div id="roster-container" class="tab-pane active"></div>
+        <div id="team-stats-container" class="tab-pane">Team Stats Content</div>
+        <div id="player-stats-container" class="tab-pane">Player Stats Content</div>
+    </div>
+    <script src="team-roster.js"></script>
+</body>
+</html>

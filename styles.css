@@ -1,0 +1,211 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #ecf0f1;
+    --text-color: #34495e;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.title {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.left-column, .right-column {
+    width: 48%;
+}
+
+.section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    
+}
+
+.section h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    
+}
+
+/* Navigation styles */
+nav {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    font-size: 12px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Dropdown styles */
+.dropdown {
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#fixtures-content table {
+    width: 64%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+#fixtures-content th, #fixtures-content td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#fixtures-content th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#fixtures-content tr:nth-child(even) {
+    background-color: #f2f2f2;
+
+}
+
+#fixtures-content tr:hover {
+    background-color: #ddd;
+}
+
+/* Highlight Styles */
+.highlight-green {
+  background-color: rgba(40, 167, 69, 0.2) !important;
+}
+
+.highlight-green td:first-child {
+  border-left: 4px solid #28a745;
+}
+
+.highlight-red {
+  background-color: rgba(220, 53, 69, 0.2) !important;
+}
+
+.highlight-red td:first-child {
+  border-left: 4px solid #dc3545;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+    }
+}
+
+.player-cell {
+  width: 200px; /* Adjust this width as needed */
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+}
+
+.player-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.player-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  width: 200px; /* Adjust this width as needed */
+}
+
+.team-logo-small {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.team-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

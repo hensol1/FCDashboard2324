@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCdashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="teams.html">Teams</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="title">FCdashboard</h1>
+
+    <div class="container">
+        <div class="left-column">
+<div id="fixtures" class="section">
+    <h2>Fixtures</h2>
+    <div class="dropdown">
+        <label for="matchday-select">Select Matchday:</label>
+        <select id="matchday-select">
+            <!-- Options will be populated dynamically -->
+        </select>
+    </div>
+    <div id="fixtures-content"></div>
+</div>
+
+            <div id="standings" class="section">
+                <h2>Standings</h2>
+                <div class="dropdown">
+                    <label for="season">Select Season:</label>
+                    <select id="season">
+                        <option value="23_24">23-24</option>
+                        <option value="24_25">24-25</option>
+                    </select>
+                </div>
+                <div id="content1"></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div id="player-stats" class="section">
+                <h2>Top 5 Players</h2>
+                <div id="total-distance"></div>
+                <div id="hsr-distance"></div>
+                <div id="sprint-distance"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

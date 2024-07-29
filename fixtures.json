@@ -1,0 +1,1328 @@
+{
+    "1.Matchday": [
+        {
+            "date": "Sat                                                8/26/23",
+            "time": "6:00 PM",
+            "home_team": "(10.)  Bnei Sakhnin",
+            "score": "1:1",
+            "away_team": "Hapoel Tel Aviv  (9.)"
+        },
+        {
+            "date": "",
+            "time": "6:15 PM",
+            "home_team": "(5.)  M. Petah Tikva",
+            "score": "1:1",
+            "away_team": "H. Jerusalem  (7.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(6.)  Maccabi Netanya",
+            "score": "1:1",
+            "away_team": "M. Bnei Reineh  (8.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(2.)  H. Beer Sheva",
+            "score": "3:0",
+            "away_team": "Hapoel Hadera  (13.)"
+        },
+        {
+            "date": "Sun                                                8/27/23",
+            "time": "7:15 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "4:1",
+            "away_team": "FC Ashdod  (12.)"
+        },
+        {
+            "date": "Mon                                                8/28/23",
+            "time": "7:00 PM",
+            "home_team": "(14.)  B. Jerusalem",
+            "score": "1:2",
+            "away_team": "Hapoel Haifa  (3.)"
+        },
+        {
+            "date": "Sat                                                11/25/23",
+            "time": "7:00 PM",
+            "home_team": "(4.)  Maccabi Haifa",
+            "score": "2:1",
+            "away_team": "H. Petah Tikva  (11.)"
+        }
+    ],
+    "2.Matchday": [
+        {
+            "date": "Sat                                                9/2/23",
+            "time": "6:00 PM",
+            "home_team": "(7.)  M. Bnei Reineh",
+            "score": "1:1",
+            "away_team": "H. Beer Sheva  (2.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(9.)  H. Petah Tikva",
+            "score": "1:1",
+            "away_team": "Bnei Sakhnin  (8.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(4.)  Hapoel Haifa",
+            "score": "2:2",
+            "away_team": "M. Petah Tikva  (6.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(5.)  Hapoel Tel Aviv",
+            "score": "2:0",
+            "away_team": "Maccabi Netanya  (11.)"
+        },
+        {
+            "date": "Sun                                                9/3/23",
+            "time": "7:00 PM",
+            "home_team": "(10.)  H. Jerusalem",
+            "score": "1:2",
+            "away_team": "Maccabi Haifa  (3.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(13.)  Hapoel Hadera",
+            "score": "0:3",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "Mon                                                9/4/23",
+            "time": "7:00 PM",
+            "home_team": "(12.)  FC Ashdod",
+            "score": "1:2",
+            "away_team": "B. Jerusalem  (14.)"
+        }
+    ],
+    "3.Matchday": [
+        {
+            "date": "Sun                                                9/17/23",
+            "time": "12:00 AM",
+            "home_team": "(2.)  Hapoel Haifa",
+            "score": "2:0",
+            "away_team": "FC Ashdod  (13.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(8.)  Bnei Sakhnin",
+            "score": "2:1",
+            "away_team": "H. Jerusalem  (11.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "1:1",
+            "away_team": "M. Bnei Reineh  (9.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(4.)  M. Petah Tikva",
+            "score": "3:2",
+            "away_team": "Maccabi Haifa  (6.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(7.)  Maccabi Netanya",
+            "score": "4:1",
+            "away_team": "H. Petah Tikva  (12.)"
+        },
+        {
+            "date": "Mon                                                9/18/23",
+            "time": "7:00 PM",
+            "home_team": "(10.)  B. Jerusalem",
+            "score": "2:0",
+            "away_team": "Hapoel Hadera  (14.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(3.)  H. Beer Sheva",
+            "score": "0:0",
+            "away_team": "Hapoel Tel Aviv  (5.)"
+        }
+    ],
+    "4.Matchday": [
+        {
+            "date": "Sat                                                9/23/23",
+            "time": "5:00 PM",
+            "home_team": "(9.)  H. Petah Tikva",
+            "score": "1:0",
+            "away_team": "H. Beer Sheva  (5.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(14.)  Hapoel Hadera",
+            "score": "1:2",
+            "away_team": "Hapoel Haifa  (2.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(13.)  FC Ashdod",
+            "score": "1:1",
+            "away_team": "M. Petah Tikva  (3.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(11.)  H. Jerusalem",
+            "score": "1:1",
+            "away_team": "Maccabi Netanya  (7.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(4.)  M. Bnei Reineh",
+            "score": "2:1",
+            "away_team": "B. Jerusalem  (12.)"
+        },
+        {
+            "date": "Tue                                                9/26/23",
+            "time": "7:30 PM",
+            "home_team": "(10.)  Hapoel Tel Aviv",
+            "score": "0:5",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "Wed                                                9/27/23",
+            "time": "7:00 PM",
+            "home_team": "(6.)  Maccabi Haifa",
+            "score": "1:1",
+            "away_team": "Bnei Sakhnin  (8.)"
+        }
+    ],
+    "5.Matchday": [
+        {
+            "date": "Sat                                                9/30/23",
+            "time": "4:45 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "2:0",
+            "away_team": "H. Petah Tikva  (10.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(3.)  M. Petah Tikva",
+            "score": "5:1",
+            "away_team": "Bnei Sakhnin  (9.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(2.)  Hapoel Haifa",
+            "score": "1:2",
+            "away_team": "M. Bnei Reineh  (4.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(14.)  FC Ashdod",
+            "score": "0:1",
+            "away_team": "Hapoel Hadera  (11.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(5.)  H. Beer Sheva",
+            "score": "3:0",
+            "away_team": "H. Jerusalem  (12.)"
+        },
+        {
+            "date": "Sun                                                10/1/23",
+            "time": "7:15 PM",
+            "home_team": "(8.)  Maccabi Netanya",
+            "score": "2:3",
+            "away_team": "Maccabi Haifa  (6.)"
+        },
+        {
+            "date": "Mon                                                10/2/23",
+            "time": "7:30 PM",
+            "home_team": "(13.)  B. Jerusalem",
+            "score": "0:3",
+            "away_team": "Hapoel Tel Aviv  (7.)"
+        }
+    ],
+    "6.Matchday": [
+        {
+            "date": "Sat                                                12/2/23",
+            "time": "2:00 PM",
+            "home_team": "(7.)  Hapoel Tel Aviv",
+            "score": "0:1",
+            "away_team": "Hapoel Haifa  (2.)"
+        },
+        {
+            "date": "",
+            "time": "3:45 PM",
+            "home_team": "(11.)  Hapoel Hadera",
+            "score": "3:0",
+            "away_team": "M. Petah Tikva  (5.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(10.)  Bnei Sakhnin",
+            "score": "1:1",
+            "away_team": "Maccabi Netanya  (9.)"
+        },
+        {
+            "date": "",
+            "time": "6:00 PM",
+            "home_team": "(4.)  M. Bnei Reineh",
+            "score": "0:0",
+            "away_team": "FC Ashdod  (13.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(8.)  H. Petah Tikva",
+            "score": "1:0",
+            "away_team": "B. Jerusalem  (14.)"
+        },
+        {
+            "date": "Sun                                                12/3/23",
+            "time": "7:00 PM",
+            "home_team": "(12.)  H. Jerusalem",
+            "score": "1:2",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(3.)  Maccabi Haifa",
+            "score": "1:0",
+            "away_team": "H. Beer Sheva  (6.)"
+        }
+    ],
+    "7.Matchday": [
+        {
+            "date": "Tue                                                12/5/23",
+            "time": "6:00 PM",
+            "home_team": "(5.)  M. Petah Tikva",
+            "score": "1:0",
+            "away_team": "Maccabi Netanya  (10.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(11.)  Hapoel Hadera",
+            "score": "0:2",
+            "away_team": "M. Bnei Reineh  (4.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "1:1",
+            "away_team": "H. Petah Tikva  (8.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(12.)  FC Ashdod",
+            "score": "2:1",
+            "away_team": "Hapoel Tel Aviv  (9.)"
+        },
+        {
+            "date": "Wed                                                12/6/23",
+            "time": "6:45 PM",
+            "home_team": "(7.)  H. Beer Sheva",
+            "score": "1:2",
+            "away_team": "Bnei Sakhnin  (6.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(13.)  B. Jerusalem",
+            "score": "1:0",
+            "away_team": "H. Jerusalem  (14.)"
+        },
+        {
+            "date": "Wed                                                1/10/24",
+            "time": "7:30 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "0:1",
+            "away_team": "Maccabi Haifa  (2.)"
+        }
+    ],
+    "8.Matchday": [
+        {
+            "date": "Sat                                                12/9/23",
+            "time": "2:00 PM",
+            "home_team": "(8.)  H. Petah Tikva",
+            "score": "1:1",
+            "away_team": "FC Ashdod  (12.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(3.)  M. Bnei Reineh",
+            "score": "3:0",
+            "away_team": "M. Petah Tikva  (5.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(10.)  Hapoel Tel Aviv",
+            "score": "1:1",
+            "away_team": "Hapoel Hadera  (11.)"
+        },
+        {
+            "date": "Sun                                                12/10/23",
+            "time": "6:30 PM",
+            "home_team": "(14.)  H. Jerusalem",
+            "score": "0:1",
+            "away_team": "Hapoel Haifa  (2.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(7.)  Bnei Sakhnin",
+            "score": "2:3",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(4.)  Maccabi Haifa",
+            "score": "1:1",
+            "away_team": "B. Jerusalem  (13.)"
+        },
+        {
+            "date": "Mon                                                12/11/23",
+            "time": "7:00 PM",
+            "home_team": "(6.)  Maccabi Netanya",
+            "score": "1:0",
+            "away_team": "H. Beer Sheva  (9.)"
+        }
+    ],
+    "9.Matchday": [
+        {
+            "date": "Sat                                                12/16/23",
+            "time": "2:00 PM",
+            "home_team": "(4.)  M. Bnei Reineh",
+            "score": "1:2",
+            "away_team": "Hapoel Tel Aviv  (7.)"
+        },
+        {
+            "date": "",
+            "time": "5:00 PM",
+            "home_team": "(5.)  M. Petah Tikva",
+            "score": "1:4",
+            "away_team": "H. Beer Sheva  (6.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(11.)  FC Ashdod",
+            "score": "2:0",
+            "away_team": "H. Jerusalem  (14.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(9.)  Hapoel Hadera",
+            "score": "1:0",
+            "away_team": "H. Petah Tikva  (12.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(13.)  B. Jerusalem",
+            "score": "1:1",
+            "away_team": "Bnei Sakhnin  (8.)"
+        },
+        {
+            "date": "Sun                                                12/17/23",
+            "time": "7:00 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "2:1",
+            "away_team": "Maccabi Netanya  (10.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "0:3",
+            "away_team": "Maccabi Haifa  (2.)"
+        }
+    ],
+    "10.Matchday": [
+        {
+            "date": "Tue                                                12/19/23",
+            "time": "6:00 PM",
+            "home_team": "(12.)  H. Petah Tikva",
+            "score": "0:1",
+            "away_team": "M. Bnei Reineh  (3.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(14.)  H. Jerusalem",
+            "score": "1:0",
+            "away_team": "Hapoel Hadera  (9.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(5.)  Hapoel Tel Aviv",
+            "score": "2:0",
+            "away_team": "M. Petah Tikva  (6.)"
+        },
+        {
+            "date": "Wed                                                12/20/23",
+            "time": "6:00 PM",
+            "home_team": "(8.)  Bnei Sakhnin",
+            "score": "1:1",
+            "away_team": "Hapoel Haifa  (4.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(11.)  Maccabi Netanya",
+            "score": "0:3",
+            "away_team": "B. Jerusalem  (10.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "4:0",
+            "away_team": "FC Ashdod  (13.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(7.)  H. Beer Sheva",
+            "score": "0:1",
+            "away_team": "M. Tel Aviv  (1.)"
+        }
+    ],
+    "11.Matchday": [
+        {
+            "date": "Sat                                                12/23/23",
+            "time": "2:00 PM",
+            "home_team": "(5.)  Hapoel Tel Aviv",
+            "score": "4:1",
+            "away_team": "H. Petah Tikva  (12.)"
+        },
+        {
+            "date": "",
+            "time": "5:00 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "2:1",
+            "away_team": "Maccabi Netanya  (11.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(13.)  FC Ashdod",
+            "score": "0:1",
+            "away_team": "Bnei Sakhnin  (6.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(4.)  M. Bnei Reineh",
+            "score": "1:1",
+            "away_team": "H. Jerusalem  (14.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(9.)  B. Jerusalem",
+            "score": "4:4",
+            "away_team": "H. Beer Sheva  (7.)"
+        },
+        {
+            "date": "Sun                                                12/24/23",
+            "time": "7:00 PM",
+            "home_team": "(8.)  M. Petah Tikva",
+            "score": "1:2",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(10.)  Hapoel Hadera",
+            "score": "1:5",
+            "away_team": "Maccabi Haifa  (2.)"
+        }
+    ],
+    "12.Matchday": [
+        {
+            "date": "Tue                                                12/26/23",
+            "time": "6:00 PM",
+            "home_team": "(10.)  Maccabi Netanya",
+            "score": "1:0",
+            "away_team": "FC Ashdod  (13.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(12.)  H. Jerusalem",
+            "score": "2:1",
+            "away_team": "Hapoel Tel Aviv  (5.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(6.)  H. Beer Sheva",
+            "score": "4:0",
+            "away_team": "Hapoel Haifa  (3.)"
+        },
+        {
+            "date": "Wed                                                12/27/23",
+            "time": "6:00 PM",
+            "home_team": "(8.)  Bnei Sakhnin",
+            "score": "0:1",
+            "away_team": "Hapoel Hadera  (9.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(7.)  M. Petah Tikva",
+            "score": "2:0",
+            "away_team": "H. Petah Tikva  (14.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "1:0",
+            "away_team": "M. Bnei Reineh  (4.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "1:0",
+            "away_team": "B. Jerusalem  (11.)"
+        }
+    ],
+    "13.Matchday": [
+        {
+            "date": "Sat                                                12/30/23",
+            "time": "2:00 PM",
+            "home_team": "(13.)  H. Petah Tikva",
+            "score": "1:2",
+            "away_team": "H. Jerusalem  (12.)"
+        },
+        {
+            "date": "",
+            "time": "5:00 PM",
+            "home_team": "(11.)  Hapoel Hadera",
+            "score": "1:4",
+            "away_team": "Maccabi Netanya  (8.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(4.)  M. Bnei Reineh",
+            "score": "0:1",
+            "away_team": "Bnei Sakhnin  (7.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(14.)  FC Ashdod",
+            "score": "1:3",
+            "away_team": "H. Beer Sheva  (5.)"
+        },
+        {
+            "date": "Sun                                                12/31/23",
+            "time": "6:45 PM",
+            "home_team": "(10.)  B. Jerusalem",
+            "score": "3:2",
+            "away_team": "M. Petah Tikva  (9.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "0:1",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(6.)  Hapoel Tel Aviv",
+            "score": "0:0",
+            "away_team": "Maccabi Haifa  (2.)"
+        }
+    ],
+    "14.Matchday": [
+        {
+            "date": "Tue                                                1/2/24",
+            "time": "6:00 PM",
+            "home_team": "(5.)  M. Bnei Reineh",
+            "score": "1:3",
+            "away_team": "Maccabi Netanya  (7.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(12.)  Hapoel Hadera",
+            "score": "0:2",
+            "away_team": "H. Beer Sheva  (4.)"
+        },
+        {
+            "date": "Wed                                                1/3/24",
+            "time": "6:00 PM",
+            "home_team": "(9.)  H. Jerusalem",
+            "score": "3:1",
+            "away_team": "M. Petah Tikva  (10.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(6.)  Hapoel Tel Aviv",
+            "score": "3:3",
+            "away_team": "Bnei Sakhnin  (8.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(14.)  FC Ashdod",
+            "score": "1:4",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "",
+            "time": "7:15 PM",
+            "home_team": "(13.)  H. Petah Tikva",
+            "score": "2:2",
+            "away_team": "Maccabi Haifa  (2.)"
+        },
+        {
+            "date": "Thu                                                1/4/24",
+            "time": "7:30 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "3:2",
+            "away_team": "B. Jerusalem  (11.)"
+        }
+    ],
+    "15.Matchday": [
+        {
+            "date": "Sat                                                1/6/24",
+            "time": "2:00 PM",
+            "home_team": "(4.)  H. Beer Sheva",
+            "score": "4:2",
+            "away_team": "M. Bnei Reineh  (6.)"
+        },
+        {
+            "date": "",
+            "time": "5:00 PM",
+            "home_team": "(8.)  Bnei Sakhnin",
+            "score": "0:0",
+            "away_team": "H. Petah Tikva  (13.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(5.)  Maccabi Netanya",
+            "score": "2:1",
+            "away_team": "Hapoel Tel Aviv  (7.)"
+        },
+        {
+            "date": "Sun                                                1/7/24",
+            "time": "7:00 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "1:1",
+            "away_team": "Hapoel Hadera  (12.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "2:1",
+            "away_team": "H. Jerusalem  (9.)"
+        },
+        {
+            "date": "Mon                                                1/8/24",
+            "time": "6:00 PM",
+            "home_team": "(10.)  M. Petah Tikva",
+            "score": "0:3",
+            "away_team": "Hapoel Haifa  (3.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(11.)  B. Jerusalem",
+            "score": "1:1",
+            "away_team": "FC Ashdod  (14.)"
+        }
+    ],
+    "16.Matchday": [
+        {
+            "date": "Sat                                                1/13/24",
+            "time": "2:00 PM",
+            "home_team": "(13.)  Hapoel Hadera",
+            "score": "0:3",
+            "away_team": "B. Jerusalem  (9.)"
+        },
+        {
+            "date": "",
+            "time": "5:00 PM",
+            "home_team": "(10.)  H. Jerusalem",
+            "score": "0:0",
+            "away_team": "Bnei Sakhnin  (7.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(12.)  H. Petah Tikva",
+            "score": "2:0",
+            "away_team": "Maccabi Netanya  (6.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(14.)  FC Ashdod",
+            "score": "0:1",
+            "away_team": "Hapoel Haifa  (3.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(8.)  Hapoel Tel Aviv",
+            "score": "0:4",
+            "away_team": "H. Beer Sheva  (4.)"
+        },
+        {
+            "date": "Sun                                                1/14/24",
+            "time": "7:00 PM",
+            "home_team": "(5.)  M. Bnei Reineh",
+            "score": "2:2",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "5:0",
+            "away_team": "M. Petah Tikva  (11.)"
+        }
+    ],
+    "17.Matchday": [
+        {
+            "date": "Tue                                                1/16/24",
+            "time": "6:00 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "2:0",
+            "away_team": "Hapoel Hadera  (13.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(6.)  Maccabi Netanya",
+            "score": "2:1",
+            "away_team": "H. Jerusalem  (10.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(4.)  H. Beer Sheva",
+            "score": "2:0",
+            "away_team": "H. Petah Tikva  (12.)"
+        },
+        {
+            "date": "Wed                                                1/17/24",
+            "time": "6:00 PM",
+            "home_team": "(11.)  M. Petah Tikva",
+            "score": "1:2",
+            "away_team": "FC Ashdod  (14.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(9.)  B. Jerusalem",
+            "score": "1:2",
+            "away_team": "M. Bnei Reineh  (5.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(7.)  Bnei Sakhnin",
+            "score": "0:3",
+            "away_team": "Maccabi Haifa  (2.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "4:2",
+            "away_team": "Hapoel Tel Aviv  (8.)"
+        }
+    ],
+    "18.Matchday": [
+        {
+            "date": "Sat                                                1/20/24",
+            "time": "2:00 PM",
+            "home_team": "(13.)  Hapoel Hadera",
+            "score": "1:1",
+            "away_team": "FC Ashdod  (14.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(5.)  M. Bnei Reineh",
+            "score": "0:0",
+            "away_team": "Hapoel Haifa  (3.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(10.)  H. Jerusalem",
+            "score": "0:1",
+            "away_team": "H. Beer Sheva  (4.)"
+        },
+        {
+            "date": "Sun                                                1/21/24",
+            "time": "6:00 PM",
+            "home_team": "(7.)  Bnei Sakhnin",
+            "score": "1:1",
+            "away_team": "M. Petah Tikva  (11.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(12.)  H. Petah Tikva",
+            "score": "0:0",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "4:0",
+            "away_team": "Maccabi Netanya  (6.)"
+        },
+        {
+            "date": "Mon                                                1/22/24",
+            "time": "7:00 PM",
+            "home_team": "(9.)  Hapoel Tel Aviv",
+            "score": "0:1",
+            "away_team": "B. Jerusalem  (8.)"
+        }
+    ],
+    "19.Matchday": [
+        {
+            "date": "Tue                                                1/30/24",
+            "time": "6:00 PM",
+            "home_team": "(11.)  FC Ashdod",
+            "score": "1:0",
+            "away_team": "M. Bnei Reineh  (5.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(6.)  Maccabi Netanya",
+            "score": "0:1",
+            "away_team": "Bnei Sakhnin  (7.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(8.)  B. Jerusalem",
+            "score": "2:2",
+            "away_team": "H. Petah Tikva  (13.)"
+        },
+        {
+            "date": "Wed                                                1/31/24",
+            "time": "6:00 PM",
+            "home_team": "(10.)  M. Petah Tikva",
+            "score": "1:0",
+            "away_team": "Hapoel Hadera  (14.)"
+        },
+        {
+            "date": "",
+            "time": "6:45 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "4:3",
+            "away_team": "Hapoel Tel Aviv  (9.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "2:1",
+            "away_team": "H. Jerusalem  (12.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(4.)  H. Beer Sheva",
+            "score": "2:1",
+            "away_team": "Maccabi Haifa  (2.)"
+        }
+    ],
+    "20.Matchday": [
+        {
+            "date": "Sat                                                2/3/24",
+            "time": "2:00 PM",
+            "home_team": "(6.)  Maccabi Netanya",
+            "score": "0:1",
+            "away_team": "M. Petah Tikva  (9.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(7.)  Bnei Sakhnin",
+            "score": "0:2",
+            "away_team": "H. Beer Sheva  (4.)"
+        },
+        {
+            "date": "",
+            "time": "5:00 PM",
+            "home_team": "(13.)  H. Petah Tikva",
+            "score": "0:2",
+            "away_team": "Hapoel Haifa  (3.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(8.)  Hapoel Tel Aviv",
+            "score": "3:1",
+            "away_team": "FC Ashdod  (12.)"
+        },
+        {
+            "date": "Sun                                                2/4/24",
+            "time": "6:00 PM",
+            "home_team": "(5.)  M. Bnei Reineh",
+            "score": "2:1",
+            "away_team": "Hapoel Hadera  (14.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(11.)  H. Jerusalem",
+            "score": "2:1",
+            "away_team": "B. Jerusalem  (10.)"
+        },
+        {
+            "date": "Mon                                                2/5/24",
+            "time": "7:30 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "2:0",
+            "away_team": "M. Tel Aviv  (1.)"
+        }
+    ],
+    "21.Matchday": [
+        {
+            "date": "Sat                                                2/10/24",
+            "time": "2:00 PM",
+            "home_team": "(2.)  M. Tel Aviv",
+            "score": "1:1",
+            "away_team": "Bnei Sakhnin  (6.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(13.)  Hapoel Hadera",
+            "score": "1:0",
+            "away_team": "Hapoel Tel Aviv  (9.)"
+        },
+        {
+            "date": "",
+            "time": "5:00 PM",
+            "home_team": "(7.)  M. Petah Tikva",
+            "score": "1:0",
+            "away_team": "M. Bnei Reineh  (5.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(12.)  FC Ashdod",
+            "score": "2:0",
+            "away_team": "H. Petah Tikva  (14.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(11.)  B. Jerusalem",
+            "score": "0:2",
+            "away_team": "Maccabi Haifa  (1.)"
+        },
+        {
+            "date": "Sun                                                2/11/24",
+            "time": "7:00 PM",
+            "home_team": "(3.)  H. Beer Sheva",
+            "score": "2:0",
+            "away_team": "Maccabi Netanya  (8.)"
+        },
+        {
+            "date": "Mon                                                2/12/24",
+            "time": "7:00 PM",
+            "home_team": "(4.)  Hapoel Haifa",
+            "score": "2:3",
+            "away_team": "H. Jerusalem  (10.)"
+        }
+    ],
+    "22.Matchday": [
+        {
+            "date": "Sat                                                2/17/24",
+            "time": "2:00 PM",
+            "home_team": "(9.)  Hapoel Tel Aviv",
+            "score": "0:0",
+            "away_team": "M. Bnei Reineh  (5.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(3.)  H. Beer Sheva",
+            "score": "1:1",
+            "away_team": "M. Petah Tikva  (7.)"
+        },
+        {
+            "date": "",
+            "time": "5:30 PM",
+            "home_team": "(10.)  H. Jerusalem",
+            "score": "1:1",
+            "away_team": "FC Ashdod  (12.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(14.)  H. Petah Tikva",
+            "score": "0:2",
+            "away_team": "Hapoel Hadera  (13.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(6.)  Bnei Sakhnin",
+            "score": "2:1",
+            "away_team": "B. Jerusalem  (11.)"
+        },
+        {
+            "date": "Sun                                                2/18/24",
+            "time": "7:30 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "1:1",
+            "away_team": "Hapoel Haifa  (4.)"
+        },
+        {
+            "date": "Mon                                                2/19/24",
+            "time": "7:00 PM",
+            "home_team": "(8.)  Maccabi Netanya",
+            "score": "1:5",
+            "away_team": "M. Tel Aviv  (1.)"
+        }
+    ],
+    "23.Matchday": [
+        {
+            "date": "Sat                                                2/24/24",
+            "time": "2:00 PM",
+            "home_team": "(7.)  M. Petah Tikva",
+            "score": "3:0",
+            "away_team": "Hapoel Tel Aviv  (10.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(4.)  Hapoel Haifa",
+            "score": "1:2",
+            "away_team": "Bnei Sakhnin  (5.)"
+        },
+        {
+            "date": "",
+            "time": "5:30 PM",
+            "home_team": "(12.)  Hapoel Hadera",
+            "score": "1:1",
+            "away_team": "H. Jerusalem  (9.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(11.)  B. Jerusalem",
+            "score": "0:0",
+            "away_team": "Maccabi Netanya  (8.)"
+        },
+        {
+            "date": "",
+            "time": "7:00 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "1:0",
+            "away_team": "H. Beer Sheva  (3.)"
+        },
+        {
+            "date": "Sun                                                2/25/24",
+            "time": "7:00 PM",
+            "home_team": "(13.)  FC Ashdod",
+            "score": "0:5",
+            "away_team": "Maccabi Haifa  (2.)"
+        },
+        {
+            "date": "Mon                                                2/26/24",
+            "time": "7:00 PM",
+            "home_team": "(6.)  M. Bnei Reineh",
+            "score": "1:1",
+            "away_team": "H. Petah Tikva  (14.)"
+        }
+    ],
+    "24.Matchday": [
+        {
+            "date": "Sat                                                3/2/24",
+            "time": "2:00 PM",
+            "home_team": "(9.)  Maccabi Netanya",
+            "score": "1:2",
+            "away_team": "Hapoel Haifa  (4.)"
+        },
+        {
+            "date": "",
+            "time": "5:30 PM",
+            "home_team": "(5.)  Bnei Sakhnin",
+            "score": "1:1",
+            "away_team": "FC Ashdod  (12.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(8.)  H. Jerusalem",
+            "score": "1:0",
+            "away_team": "M. Bnei Reineh  (6.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "4:0",
+            "away_team": "M. Petah Tikva  (7.)"
+        },
+        {
+            "date": "Sun                                                3/3/24",
+            "time": "7:00 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "1:0",
+            "away_team": "Hapoel Hadera  (13.)"
+        },
+        {
+            "date": "Mon                                                3/4/24",
+            "time": "7:00 PM",
+            "home_team": "(14.)  H. Petah Tikva",
+            "score": "0:0",
+            "away_team": "Hapoel Tel Aviv  (10.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(3.)  H. Beer Sheva",
+            "score": "1:0",
+            "away_team": "B. Jerusalem  (11.)"
+        }
+    ],
+    "25.Matchday": [
+        {
+            "date": "Sat                                                3/9/24",
+            "time": "7:00 PM",
+            "home_team": "(14.)  H. Petah Tikva",
+            "score": "2:2",
+            "away_team": "M. Petah Tikva  (7.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(10.)  Hapoel Tel Aviv",
+            "score": "0:0",
+            "away_team": "H. Jerusalem  (8.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(11.)  Hapoel Hadera",
+            "score": "1:0",
+            "away_team": "Bnei Sakhnin  (6.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(13.)  FC Ashdod",
+            "score": "0:2",
+            "away_team": "Maccabi Netanya  (9.)"
+        },
+        {
+            "date": "Sun                                                3/10/24",
+            "time": "7:00 PM",
+            "home_team": "(5.)  M. Bnei Reineh",
+            "score": "2:1",
+            "away_team": "Maccabi Haifa  (2.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(12.)  B. Jerusalem",
+            "score": "0:1",
+            "away_team": "M. Tel Aviv  (1.)"
+        },
+        {
+            "date": "Mon                                                3/11/24",
+            "time": "7:00 PM",
+            "home_team": "(3.)  Hapoel Haifa",
+            "score": "1:0",
+            "away_team": "H. Beer Sheva  (4.)"
+        }
+    ],
+    "26.Matchday": [
+        {
+            "date": "Sat                                                3/16/24",
+            "time": "2:00 PM",
+            "home_team": "(7.)  H. Jerusalem",
+            "score": "3:2",
+            "away_team": "H. Petah Tikva  (14.)"
+        },
+        {
+            "date": "",
+            "time": "4:30 PM",
+            "home_team": "(3.)  H. Beer Sheva",
+            "score": "1:0",
+            "away_team": "FC Ashdod  (13.)"
+        },
+        {
+            "date": "",
+            "time": "5:30 PM",
+            "home_team": "(9.)  Maccabi Netanya",
+            "score": "1:3",
+            "away_team": "Hapoel Hadera  (10.)"
+        },
+        {
+            "date": "",
+            "time": "6:30 PM",
+            "home_team": "(8.)  M. Petah Tikva",
+            "score": "0:3",
+            "away_team": "B. Jerusalem  (12.)"
+        },
+        {
+            "date": "",
+            "time": "",
+            "home_team": "(6.)  Bnei Sakhnin",
+            "score": "0:0",
+            "away_team": "M. Bnei Reineh  (5.)"
+        },
+        {
+            "date": "Sun                                                3/17/24",
+            "time": "7:00 PM",
+            "home_team": "(1.)  M. Tel Aviv",
+            "score": "3:1",
+            "away_team": "Hapoel Haifa  (4.)"
+        },
+        {
+            "date": "",
+            "time": "7:30 PM",
+            "home_team": "(2.)  Maccabi Haifa",
+            "score": "0:0",
+            "away_team": "Hapoel Tel Aviv  (11.)"
+        }
+    ]
+}
