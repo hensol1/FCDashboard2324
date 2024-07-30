@@ -1310,7 +1310,8 @@
     "Tackle%": "25.00%",
     "Duel%": "38.90%",
     "Aerial%": "50.00%",
-    "Recovery": 6.85
+    "Recovery": 6.85,
+    "winter": "out"    
   },
   {
     "Rank": 33,
@@ -2830,7 +2831,8 @@
     "Tackle%": "16.70%",
     "Duel%": "47.80%",
     "Aerial%": "33.30%",
-    "Recovery": 6.88
+    "Recovery": 6.88,
+    "winter": "out"    
   },
   {
     "Rank": 70,
@@ -3291,7 +3293,7 @@
     "playerImageId": 165143,
     "Player": "K. Saief",
     "playerFullName": "Kenny Saief",
-    "Position": "Left Back",
+    "Position": "Left Winger",
     "teamImageId": 491,
     "teamName": "Maccabi Haifa",
     "teamShortName": "M Haifa",
@@ -3324,7 +3326,8 @@
     "Tackle%": "50.00%",
     "Duel%": "54.50%",
     "Aerial%": "56.00%",
-    "Recovery": 5.17
+    "Recovery": 5.17,
+    "winter": "in"  
   },
   {
     "Rank": 82,
@@ -3899,7 +3902,8 @@
     "Tackle%": "100.00%",
     "Duel%": "66.70%",
     "Aerial%": "-",
-    "Recovery": 0
+    "Recovery": 0,
+    "winter": "out"    
   },
   {
     "Rank": 96,
@@ -3981,7 +3985,8 @@
     "Tackle%": "13.30%",
     "Duel%": "39.80%",
     "Aerial%": "0.00%",
-    "Recovery": 4.43
+    "Recovery": 4.43,
+    "winter": "out"    
   },
   {
     "Rank": 98,
@@ -4104,7 +4109,8 @@
     "Tackle%": "30.80%",
     "Duel%": "48.40%",
     "Aerial%": "66.70%",
-    "Recovery": 6.18
+    "Recovery": 6.18,
+    "winter": "in"    
   },
   {
     "Rank": 101,
@@ -4432,7 +4438,8 @@
     "Tackle%": "33.30%",
     "Duel%": "40.90%",
     "Aerial%": "100.00%",
-    "Recovery": 3.4
+    "Recovery": 3.4,
+    "winter": "in"  
   },
   {
     "Rank": 109,
@@ -6252,7 +6259,7 @@
     "playerImageId": 619785,
     "Player": "S. Podgoreanu",
     "playerFullName": "Suf Podgoreanu",
-    "Position": "Left Back",
+    "Position": "Left Winger",
     "teamImageId": 491,
     "teamName": "Maccabi Haifa",
     "teamShortName": "M Haifa",
@@ -10111,7 +10118,8 @@
     "Tackle%": "40.00%",
     "Duel%": "35.30%",
     "Aerial%": "0.00%",
-    "Recovery": 2.82
+    "Recovery": 2.82,
+    "winter": "out"    
   },
   {
     "Rank": 243,
@@ -11302,7 +11310,8 @@
     "Tackle%": "37.50%",
     "Duel%": "50.80%",
     "Aerial%": "35.00%",
-    "Recovery": 4.23
+    "Recovery": 4.23,
+    "winter": "in"  
   },
   {
     "Rank": 272,
@@ -11466,7 +11475,8 @@
     "Tackle%": "14.30%",
     "Duel%": "37.00%",
     "Aerial%": "33.30%",
-    "Recovery": 4
+    "Recovery": 4,
+    "winter": "out"    
   },
   {
     "Rank": 276,
@@ -11589,7 +11599,8 @@
     "Tackle%": "36.40%",
     "Duel%": "46.70%",
     "Aerial%": "0.00%",
-    "Recovery": 4.11
+    "Recovery": 4.11,
+    "winter": "out"    
   },
   {
     "Rank": 279,
@@ -12657,7 +12668,8 @@
     "Tackle%": "25.00%",
     "Duel%": "37.50%",
     "Aerial%": "53.80%",
-    "Recovery": 6.08
+    "Recovery": 6.08,
+    "winter": "in"    
   },
   {
     "Rank": 305,
@@ -12821,7 +12833,8 @@
     "Tackle%": "28.60%",
     "Duel%": "44.70%",
     "Aerial%": "0.00%",
-    "Recovery": 4.29
+    "Recovery": 4.29,
+    "winter": "out"  
   },
   {
     "Rank": 309,
@@ -13438,7 +13451,8 @@
     "Tackle%": "12.50%",
     "Duel%": "46.40%",
     "Aerial%": "55.10%",
-    "Recovery": 3.26
+    "Recovery": 3.26,
+    "winter": "in"  
   },
   {
     "Rank": 324,
@@ -14012,7 +14026,8 @@
     "Tackle%": "33.30%",
     "Duel%": "35.90%",
     "Aerial%": "29.20%",
-    "Recovery": 1.12
+    "Recovery": 1.12,
+    "winter": "in"   
   },
   {
     "Rank": 337,
@@ -17006,7 +17021,8 @@
     "Tackle%": "20.00%",
     "Duel%": "30.40%",
     "Aerial%": "50.00%",
-    "Recovery": 1.74
+    "Recovery": 1.74,
+    "winter": "out"  
   },
   {
     "Rank": 411,
@@ -17253,7 +17269,8 @@
     "Tackle%": "20.00%",
     "Duel%": "33.70%",
     "Aerial%": "42.90%",
-    "Recovery": 2.56
+    "Recovery": 2.56,
+    "winter": "in"  
   },
   {
     "Rank": 417,
@@ -17417,7 +17434,8 @@
     "Tackle%": "16.70%",
     "Duel%": "40.00%",
     "Aerial%": "32.00%",
-    "Recovery": 1.61
+    "Recovery": 1.61,
+    "winter": "in"  
   },
   {
     "Rank": 421,
@@ -18040,7 +18058,7 @@
     "playerImageId": 935115,
     "Player": "M. Suleiman",
     "playerFullName": "Majed Suleiman",
-    "Position": "",
+    "Position": "Goalkeeper",
     "teamImageId": 2789,
     "teamName": "Bnei Sakhnin",
     "teamShortName": "Sakhnin",
@@ -18163,7 +18181,7 @@
     "playerImageId": 1020518,
     "Player": "M. Gadir",
     "playerFullName": "Maharan Gadir",
-    "Position": "",
+    "Position": "Goalkeeper",
     "teamImageId": 16514,
     "teamName": "Maccabi Bnei Raina",
     "teamShortName": "Bnei Raina",
@@ -18573,7 +18591,7 @@
     "playerImageId": 1023533,
     "Player": "R. Golan",
     "playerFullName": "Ram Golan",
-    "Position": "",
+    "Position": "Goalkeeper",
     "teamImageId": 3012,
     "teamName": "Hapoel Be'er Sheva",
     "teamShortName": "H Be'er Sheva",
@@ -18655,7 +18673,7 @@
     "playerImageId": 1048481,
     "Player": "I. Tovim",
     "playerFullName": "Ilay Tovim",
-    "Position": "",
+    "Position": "Goalkeeper",
     "teamImageId": 15112,
     "teamName": "Hapoel Jerusalem",
     "teamShortName": "H Jerusalem",
@@ -18737,7 +18755,7 @@
     "playerImageId": 879571,
     "Player": "R. Zaguri",
     "playerFullName": "Raz Zaguri",
-    "Position": "",
+    "Position": "Goalkeeper",
     "teamImageId": 1942,
     "teamName": "Ashdod",
     "teamShortName": "Ashdod",
@@ -19475,7 +19493,7 @@
     "playerImageId": 479691,
     "Player": "A. Tabachnik",
     "playerFullName": "Adi Tabechnik",
-    "Position": "",
+    "Position": "Goalkeeper",
     "teamImageId": 2787,
     "teamName": "Maccabi Netanya",
     "teamShortName": "M Netanya",
