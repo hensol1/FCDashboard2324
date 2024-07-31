@@ -164,7 +164,7 @@ function createPlayerCard(player, team, container) {
     const playerElement = document.createElement('div');
     playerElement.classList.add('player-card');
     
-    const imageFileName = player.playerFullName.replace(/ /g, '_') + '.webp';
+    const imageFileName = player.playerFullName.replace(/[^a-zA-Z0-9]/g, '_') + '.webp';
     const imageUrl = `player-images/${imageFileName}`;
     
     loadPlayerImage(imageUrl, playerElement);
@@ -204,6 +204,7 @@ function loadPlayerImage(imageUrl, playerElement) {
     };
     img.onerror = function() {
         console.log(`Image not found for player: ${imageUrl}`);
+        console.log("Attempting to load default image");
         playerElement.style.backgroundImage = `url('player-images/default.webp')`;
     };
     img.src = imageUrl;

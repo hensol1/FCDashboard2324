@@ -533,7 +533,8 @@
     "Tackle%": "100.00%",
     "Duel%": "54.50%",
     "Aerial%": "50.00%",
-    "Recovery": 6.75
+    "Recovery": 6.75,
+    "winter": "out"  
   },
   {
     "Rank": 14,
@@ -697,8 +698,52 @@
     "Tackle%": "50.00%",
     "Duel%": "57.10%",
     "Aerial%": "66.70%",
-    "Recovery": 6.26
+    "Recovery": 6.26,
+    "winter": "on loan"  
   },
+  {
+    "Rank": "",
+    "playerId": "bb1fzw9w3pxsq94igzhdfuwdm",
+    "playerImageId": 767129,
+    "Player": "O. Eliyahu",
+    "playerFullName": "Osher Eliyahu",
+    "Position": "Central Midfielder",
+    "teamImageId": 16514,
+    "teamName": "Maccabi Netanya",
+    "teamShortName": "Bnei Raina",
+    "teamAbbrevName": "RNA",
+    "newestTeamId": "bvgvmydv5tuf6lxvwvuwbrfje",
+    "newestTeam": "Maccabi Bnei Raina",
+    "newestTeamColor": "",
+    "newestLeagueId": "2xg0qvif1rh7du6wmk2eleku3",
+    "newestLeague": "Ligat Ha'al",
+    "optaPersonId": 582844,
+    "firstName": "Osher",
+    "lastName": "Eliyahu",
+    "": "",
+    "GM": 8,
+    "Min": 115,
+    "Age": 21,
+    "Touches": 83.74,
+    "PsAtt": 62.61,
+    "Pass%": "90.00%",
+    "Ps%InA3rd": "85.70%",
+    "Chance": 2.35,
+    "Ast": 0,
+    "xA": 0.28,
+    "Goal": 0,
+    "ExpG": 0.02,
+    "ShotExcBlk": 0.78,
+    "Shot": 0.78,
+    "SOG": 0,
+    "OnTarget%": "0.00%",
+    "Tackle%": "50.00%",
+    "Duel%": "57.10%",
+    "Aerial%": "66.70%",
+    "Recovery": 6.26,
+    "winter": "out loan"  
+  },
+    
   {
     "Rank": 18,
     "playerId": "4gepi2kie9mwuspoqcez7v6c5",
@@ -3377,7 +3422,8 @@
     "Tackle%": "50.00%",
     "Duel%": "53.70%",
     "Aerial%": "100.00%",
-    "Recovery": 6.39
+    "Recovery": 6.39,
+    "winter": "in"  
   },
   {
     "Rank": 81,
@@ -13733,7 +13779,8 @@
     "Tackle%": "44.40%",
     "Duel%": "47.70%",
     "Aerial%": "46.40%",
-    "Recovery": 5.05
+    "Recovery": 5.05,
+    "winter": "in"  
   },
   {
     "Rank": 322,
