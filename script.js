@@ -470,6 +470,6 @@ function getTeamLogoUrl(team) {
 }
 
 function getTeamPageUrl(teamName) {
-    // Use the exact team name without modification
+    // Encode the entire team name without modifying it
     return `team-roster.html?team=${encodeURIComponent(teamName)}`;
 }

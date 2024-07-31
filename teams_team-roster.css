@@ -271,6 +271,14 @@ button:hover {
     background-color: #F44336; /* Red */
 }
 
+.on-loan {
+    background-color: #dde34f; /* Green */
+}
+
+.out-for-loan {
+    background-color: #1b9fe7; /* Red */
+}
+
 .player-info {
     position: absolute;
     bottom: 0;
@@ -388,3 +396,4 @@ button:hover {
     padding: 6px;
   }
 }
+

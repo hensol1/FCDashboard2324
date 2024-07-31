@@ -3,8 +3,12 @@ let physicalData = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const team = urlParams.get('team');
-    console.log("Team from URL:", team);
+    let team = urlParams.get('team');
+    console.log("Team from URL (encoded):", team);
+    
+    // Decode the team name without any modifications
+    team = decodeURIComponent(team);
+    console.log("Team name (decoded):", team);
     
     if (!team) {
         console.error("No team specified in URL");
@@ -64,7 +68,15 @@ function setupTabs() {
 
 function loadTeamRoster(team) {
     console.log("Loading roster for team:", team);
-    const teamPlayers = playersData.filter(player => player.teamName === team);
+    let teamPlayers = playersData.filter(player => player.teamName === team);
+    
+    // If no players found, try matching without special characters and case-insensitive
+    if (teamPlayers.length === 0) {
+        const normalizedTeam = team.replace(/[^a-zA-Z0-9 ]/g, '').toLowerCase();
+        teamPlayers = playersData.filter(player => 
+            player.teamName.replace(/[^a-zA-Z0-9 ]/g, '').toLowerCase() === normalizedTeam
+        );
+    }
     console.log("Team players:", teamPlayers);
     const rosterContainer = document.getElementById('roster-container');
 
@@ -163,6 +175,11 @@ function createPlayerCard(player, team, container) {
         sashHTML = '<div class="sash winter-arrival">Winter Arrival</div>';
     } else if (player.winter === "out") {
         sashHTML = '<div class="sash winter-departure">Winter Departure</div>';
+    }
+        if (player.winter === "out loan") {
+        sashHTML = '<div class="sash out-for-loan">Out for Loan</div>';
+    } else if (player.winter === "on loan") {
+        sashHTML = '<div class="sash on-loan">On Loan</div>';
     }
 
     playerElement.innerHTML = `
