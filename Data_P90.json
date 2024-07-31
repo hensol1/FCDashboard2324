@@ -10160,7 +10160,8 @@
     "Tackle%": "46.20%",
     "Duel%": "64.10%",
     "Aerial%": "57.10%",
-    "Recovery": 5.06
+    "Recovery": 5.06,
+    "winter": "out"  
   },
   {
     "Rank": 244,
@@ -12011,7 +12012,8 @@
     "Tackle%": "52.00%",
     "Duel%": "46.40%",
     "Aerial%": "42.10%",
-    "Recovery": 7.17
+    "Recovery": 7.17,
+    "winter": "out"  
   },
   {
     "Rank": 289,
@@ -12958,7 +12960,8 @@
     "Tackle%": "36.80%",
     "Duel%": "32.70%",
     "Aerial%": "25.00%",
-    "Recovery": 4.05
+    "Recovery": 4.05,
+    "winter": "in"  
   },
   {
     "Rank": 312,
@@ -13410,7 +13413,8 @@
     "Tackle%": "60.00%",
     "Duel%": "46.00%",
     "Aerial%": "26.70%",
-    "Recovery": 5.84
+    "Recovery": 5.84,
+    "winter": "in"  
   },
   {
     "Rank": 323,
@@ -16734,7 +16738,8 @@
     "Tackle%": "0.00%",
     "Duel%": "0.00%",
     "Aerial%": "0.00%",
-    "Recovery": 1.75
+    "Recovery": 1.75,
+    "winter": "out"  
   },
   {
     "Rank": 404,
@@ -17393,7 +17398,8 @@
     "Tackle%": "-",
     "Duel%": "45.00%",
     "Aerial%": "41.70%",
-    "Recovery": 0
+    "Recovery": 0,
+    "winter": "out"  
   },
   {
     "Rank": 420,
@@ -17476,7 +17482,8 @@
     "Tackle%": "-",
     "Duel%": "0.00%",
     "Aerial%": "0.00%",
-    "Recovery": 2.31
+    "Recovery": 2.31,
+    "winter": "out"  
   },
   {
     "Rank": 422,
@@ -17558,7 +17565,8 @@
     "Tackle%": "0.00%",
     "Duel%": "33.30%",
     "Aerial%": "33.30%",
-    "Recovery": 1.47
+    "Recovery": 1.47,
+    "winter": "out"  
   },
   {
     "Rank": 424,
@@ -18932,47 +18940,6 @@
     "optaPersonId": 646568,
     "firstName": "Nur Aldeen",
     "lastName": "Othman",
-    "": "",
-    "GM": 0,
-    "Min": 0,
-    "Age": 20,
-    "Touches": "-",
-    "PsAtt": "-",
-    "Pass%": "-",
-    "Ps%InA3rd": "-",
-    "Chance": "-",
-    "Ast": "-",
-    "xA": "-",
-    "Goal": "-",
-    "ExpG": "-",
-    "ShotExcBlk": "-",
-    "Shot": "-",
-    "SOG": "-",
-    "OnTarget%": "-",
-    "Tackle%": "-",
-    "Duel%": "-",
-    "Aerial%": "-",
-    "Recovery": "-"
-  },
-  {
-    "Rank": "",
-    "playerId": "3r0qm21y8ltii0xp3tq19sxlg",
-    "playerImageId": 1019754,
-    "Player": "R. Ben Navi",
-    "playerFullName": "Roy Nawi",
-    "Position": "",
-    "teamImageId": 2792,
-    "teamName": "Hapoel Petah Tikva",
-    "teamShortName": "H Petah Tikva",
-    "teamAbbrevName": "HPT",
-    "newestTeamId": "1f4f869ya31jh0biwiipqxpj2",
-    "newestTeam": "Hapoel Petah Tikva",
-    "newestTeamColor": "",
-    "newestLeagueId": "2xg0qvif1rh7du6wmk2eleku3",
-    "newestLeague": "Ligat Ha'al",
-    "optaPersonId": 646573,
-    "firstName": "Roy",
-    "lastName": "Nawi",
     "": "",
     "GM": 0,
     "Min": 0,

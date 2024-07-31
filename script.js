@@ -359,6 +359,8 @@ function createTable(data, category, categoryName, entityType, isAverage = false
 
             if (entityType === 'Player') {
                 html += '<td class="team-cell">';
+                const teamPageUrl = getTeamPageUrl(team);
+                html += `<a href="${teamPageUrl}">`;
                 html += `<img src="${getTeamLogoUrl(team)}" alt="${team} logo" class="team-logo-small">`;
                 html += `<span class="team-name">${team}</span>`;
                 html += '</td>';
