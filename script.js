@@ -314,7 +314,7 @@ function displayCategoryData(category, categoryName, gpsData, playerAverages, te
 function createTable(data, category, categoryName, entityType, isAverage = false) {
     console.log(`createTable called for ${category}, ${entityType}, isAverage: ${isAverage}`);
     try {
-        let html = `<h3>${categoryName}</h3><table>`;
+        let html = `<h3>${categoryName}</h3><table class="compact-table">`;
         html += '<tr>';
         html += `<th>${entityType}</th>`;
         if (entityType === 'Player') {
@@ -417,7 +417,7 @@ async function updateStandings() {
                 return pointsB - pointsA;
             });
 
-            let tableHtml = '<table><tr><th>Position</th><th>Club</th><th>Matches</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>+/-</th><th>Pts</th></tr>';
+            let tableHtml = '<table class="compact-table"><tr><th>Position</th><th>Club</th><th>Matches</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>+/-</th><th>Pts</th></tr>';
             for (let index = 0; index < tableData.length; index++) {
                 const team = tableData[index];
                 const teamName = season === "24_25" ? team.Club_0 : team.Team;
