@@ -189,10 +189,15 @@ select {
   text-overflow: ellipsis;
 }
 
-.team-cell {
-  display: flex;
-  align-items: center;
-  width: 200px; /* Adjust this width as needed */
+.team-cell a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.team-cell a:hover {
+    text-decoration: underline;
 }
 
 .team-logo-small {

@@ -108,17 +108,22 @@ async function displayFixtures(selectedMatchday) {
         const homeLogoUrl = await getTeamLogoUrl(homeTeam);
         const awayLogoUrl = await getTeamLogoUrl(awayTeam);
         
-        html += `<tr>
-            <td class="team-cell">
-                <img src="${homeLogoUrl}" alt="${homeTeam} logo" class="team-logo-small">
-                <span class="team-name">${fixture.home_team}</span>
-            </td>
-            <td>${fixture.score}</td>
-            <td class="team-cell">
-                <img src="${awayLogoUrl}" alt="${awayTeam} logo" class="team-logo-small">
-                <span class="team-name">${fixture.away_team}</span>
-            </td>
-        </tr>`;
+html += `<tr>
+    <td class="team-cell">
+        <a href="${getTeamPageUrl(homeTeam)}">
+            <img src="${homeLogoUrl}" alt="${homeTeam} logo" class="team-logo-small">
+            <span class="team-name">${fixture.home_team}</span>
+        </a>
+    </td>
+    <td>${fixture.score}</td>
+    <td class="team-cell">
+        <a href="${getTeamPageUrl(awayTeam)}">
+            <img src="${awayLogoUrl}" alt="${awayTeam} logo" class="team-logo-small">
+            <span class="team-name">${fixture.away_team}</span>
+        </a>
+    </td>
+</tr>`;
+
     }
     
     html += '</table>';
@@ -337,12 +342,15 @@ function createTable(data, category, categoryName, entityType, isAverage = false
             
             if (entityType === 'Player') {
                 const playerFullName = playerNameMapping[entity] || entity;
-                html += `<img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" ` +
-                        `alt="${playerFullName}" ` +
-                        `class="player-image" ` +
-                        `onerror="this.onerror=null; this.src='player-images/default.webp';">`;
-                html += `<span class="${entityType.toLowerCase()}-name">${entity}</span>`;
+                    html += `<img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" ` +
+            `alt="${playerFullName}" ` +
+            `class="player-image" ` +
+            `onerror="this.onerror=null; this.src='player-images/default.webp';">`;
+    html += `<span class="${entityType.toLowerCase()}-name">${entity}</span>`;
+
             } else {
+                const teamPageUrl = getTeamPageUrl(entity);
+                html += `<a href="${teamPageUrl}">`;
                 html += `<img src="${getTeamLogoUrl(entity)}" alt="${entity} logo" class="team-logo-small">`;
                 html += `<span class="team-name">${entity}</span>`;
             }
@@ -412,13 +420,17 @@ async function updateStandings() {
                 const team = tableData[index];
                 const teamName = season === "24_25" ? team.Club_0 : team.Team;
                 const logoUrl = await getTeamLogoUrl(teamName);
+                const teamPageUrl = getTeamPageUrl(teamName);
+
                 
                 const highlightClass = index === 0 ? "highlight-green" : index >= tableData.length - 2 ? "highlight-red" : "";
-                tableHtml += `<tr class="${highlightClass}">
-                    <td>${index + 1}</td>
-                    <td class="team-cell">
-                        <img src="${logoUrl}" alt="${teamName} logo" class="team-logo-small">
-                        <span class="team-name">${teamName}</span>
+tableHtml += `<tr class="${highlightClass}">
+    <td>${index + 1}</td>
+    <td class="team-cell">
+        <a href="${teamPageUrl}">
+            <img src="${logoUrl}" alt="${teamName} logo" class="team-logo-small">
+            <span class="team-name">${teamName}</span>
+        </a>
                     </td>
                     <td>${season === "24_25" ? team.Matches : team.GM}</td>
                     <td>${team.W}</td>
@@ -454,4 +466,8 @@ function getTeamLogoUrl(team) {
     // Remove the Promise and just return the URL
     return logoUrl;
 }
-// Make sure to define logoMap at the top of your file or import it from teams.js
+
+function getTeamPageUrl(teamName) {
+    // Use the exact team name without modification
+    return `team-roster.html?team=${encodeURIComponent(teamName)}`;
+}
