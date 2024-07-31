@@ -455,3 +455,8 @@ function getTeamPageUrl(teamName) {
     // Encode the entire team name without modifying it
     return `team-roster.html?team=${encodeURIComponent(teamName)}`;
 }
+
+function prepareFullRankingsData() {
+    const playerAverages = calculatePlayerAverages(gpsData);
+    return playerAverages;
+}
