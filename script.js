@@ -240,16 +240,12 @@ function displayTopPlayers() {
 
     console.log('GPS Data:', gpsData);
     const playerAverages = calculatePlayerAverages(gpsData);
-    const teamStats = calculateTeamStats(gpsData);
-    const teamAverages = calculateTeamAverages(teamStats);
 
     console.log('Player Averages:', playerAverages);
-    console.log('Team Stats:', teamStats);
-    console.log('Team Averages:', teamAverages);
 
     for (const category of categories) {
         console.log(`Processing category: ${category}`);
-        displayCategoryData(category, categoryNames[category], gpsData, playerAverages, teamStats, teamAverages);
+        displayCategoryData(category, categoryNames[category], gpsData, playerAverages);
     }
 
     // Add event listeners for tab buttons
@@ -263,8 +259,7 @@ function displayTopPlayers() {
         });
     });
 }
-
-function displayCategoryData(category, categoryName, gpsData, playerAverages, teamStats, teamAverages) {
+function displayCategoryData(category, categoryName, gpsData, playerAverages) {
     console.log(`displayCategoryData called for ${category}`);
     const playerMatchRecord = gpsData
         .sort((a, b) => b[category] - a[category])
@@ -274,24 +269,12 @@ function displayCategoryData(category, categoryName, gpsData, playerAverages, te
         .sort((a, b) => b[1][category] - a[1][category])
         .slice(0, 5);
 
-    const teamMatchRecord = teamStats
-        .sort((a, b) => b[category] - a[category])
-        .slice(0, 5);
-
-    const teamBestAvg = Object.entries(teamAverages)
-        .sort((a, b) => b[1][category] - a[1][category])
-        .slice(0, 5);
-
     console.log(`${category} - Player Match Record:`, playerMatchRecord);
     console.log(`${category} - Player Best Avg (10+ matches):`, playerBestAvg);
-    console.log(`${category} - Team Match Record:`, teamMatchRecord);
-    console.log(`${category} - Team Best Avg:`, teamBestAvg);
 
     const tabContents = {
         'player-match-record': createTable(playerMatchRecord, category, categoryName, 'Player'),
-        'player-best-avg': createTable(playerBestAvg, category, categoryName, 'Player', true),
-        'team-match-record': createTable(teamMatchRecord, category, categoryName, 'Team'),
-        'team-best-avg': createTable(teamBestAvg, category, categoryName, 'Team', true)
+        'player-best-avg': createTable(playerBestAvg, category, categoryName, 'Player', true)
     };
 
     Object.entries(tabContents).forEach(([tabId, content]) => {
@@ -310,7 +293,6 @@ function displayCategoryData(category, categoryName, gpsData, playerAverages, te
         }
     });
 }
-
 function createTable(data, category, categoryName, entityType, isAverage = false) {
     console.log(`createTable called for ${category}, ${entityType}, isAverage: ${isAverage}`);
     try {
@@ -417,7 +399,7 @@ async function updateStandings() {
                 return pointsB - pointsA;
             });
 
-            let tableHtml = '<table class="compact-table"><tr><th>Position</th><th>Club</th><th>Matches</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>+/-</th><th>Pts</th></tr>';
+            let tableHtml = '<table class="compact-table"><tr><th>Pos</th><th>Club</th><th>M</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>+/-</th><th>Pts</th></tr>';
             for (let index = 0; index < tableData.length; index++) {
                 const team = tableData[index];
                 const teamName = season === "24_25" ? team.Club_0 : team.Team;
