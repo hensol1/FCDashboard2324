@@ -2,6 +2,12 @@ let gpsData = [];
 let playerData = [];
 let playerNameMapping = {};
 
+const positionCategories = {
+    'Defenders': ['Centre Back', 'Right Back', 'Left Back', 'Central Defender'],
+    'Midfielders': ['Central Midfielder', 'Defensive Midfielder', 'Centre Attacking Midfielder'],
+    'Attackers': ['Left Winger', 'Right Winger', 'Centre Forward', 'Second Striker']
+};
+
 function createPlayerNameMapping() {
     playerNameMapping = {};
     playerData.forEach(player => {
@@ -18,8 +24,10 @@ function loadData() {
         gpsData = gpsJson;
         playerData = playerJson;
         createPlayerNameMapping();
+        populateClubFilter();
         displayFullRankings();
         setupTabs();
+        setupFilters();
     })
     .catch(error => console.error('Error loading data:', error));
 }
@@ -28,9 +36,11 @@ function calculatePlayerAverages(data) {
     const playerAverages = {};
     data.forEach(entry => {
         if (!playerAverages[entry.Player]) {
+            const playerInfo = playerData.find(p => p.Player === entry.Player);
             playerAverages[entry.Player] = {
                 Team: entry.Team,
-                Position: entry.Position,
+                Position: playerInfo ? playerInfo.Position : 'N/A',
+                Age: playerInfo ? playerInfo.Age : 'N/A',
                 TotalDistance: 0,
                 HsrDistance: 0,
                 SprintDistance: 0,
@@ -51,6 +61,13 @@ function calculatePlayerAverages(data) {
             avg.TotalDistance = avg.TotalDistance / avg.MatchCount;
             avg.HsrDistance = avg.HsrDistance / avg.MatchCount;
             avg.SprintDistance = avg.SprintDistance / avg.MatchCount;
+            
+            // Calculate overall fitness score
+            avg.OverallFitness = (
+                (avg.TotalDistance / 10000) + // Normalize to ~0-1 range
+                (avg.HsrDistance / 1000) +    // Normalize to ~0-1 range
+                (avg.SprintDistance / 300)    // Normalize to ~0-1 range
+            ) / 3; // Average of the three normalized scores
         } else {
             delete playerAverages[player];
         }
@@ -59,7 +76,7 @@ function calculatePlayerAverages(data) {
     return playerAverages;
 }
 
-function displayFullRankings() {
+function displayFullRankings(filteredPlayers = null) {
     const playerAverages = calculatePlayerAverages(gpsData);
     const categories = ['TotalDistance', 'HsrDistance', 'SprintDistance'];
     const categoryNames = {
@@ -69,11 +86,15 @@ function displayFullRankings() {
     };
 
     categories.forEach(category => {
-        const sortedPlayers = Object.entries(playerAverages)
+        let sortedPlayers = Object.entries(playerAverages)
             .sort((a, b) => b[1][category] - a[1][category]);
 
+        if (filteredPlayers) {
+            sortedPlayers = sortedPlayers.filter(([playerName]) => filteredPlayers.includes(playerName));
+        }
+
         let html = '<table class="compact-table">';
-        html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Average</th><th>Matches</th></tr>';
+        html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th><th>Average</th><th>Matches</th></tr>';
 
         sortedPlayers.forEach((player, index) => {
             const [playerName, stats] = player;
@@ -89,6 +110,7 @@ function displayFullRankings() {
                     <a href="${getTeamPageUrl(stats.Team)}" class="team-name">${stats.Team}</a>
                 </td>
                 <td>${stats.Position}</td>
+                <td>${stats.Age}</td>
                 <td>${stats[category].toFixed(2)}</td>
                 <td>${stats.MatchCount}</td>
             </tr>`;
@@ -99,6 +121,7 @@ function displayFullRankings() {
         document.getElementById(category.toLowerCase().replace('distance', '-distance')).innerHTML = html;
     });
 }
+
 function getTeamLogoUrl(team) {
     if (!team) return 'team-logos/default_logo.webp';
     const cleanedTeam = team.replace(/[^a-z0-9]/gi, '_').toLowerCase();
@@ -125,4 +148,73 @@ function setupTabs() {
         });
     });
 }
+
+function populateClubFilter() {
+    const clubs = [...new Set(playerData.map(player => player.teamName))];
+    const clubFilter = document.getElementById('club-filter');
+    clubs.forEach(club => {
+        const option = document.createElement('option');
+        option.value = club;
+        option.textContent = club;
+        clubFilter.appendChild(option);
+    });
+}
+
+function clearFilters() {
+    document.getElementById('player-search').value = '';
+    document.getElementById('club-filter').value = '';
+    document.getElementById('position-filter').value = '';
+    document.getElementById('age-filter').value = '';
+    applyFilters(); // Re-apply filters (which will now show all players)
+}
+
+
+function setupFilters() {
+    const playerSearch = document.getElementById('player-search');
+    const clubFilter = document.getElementById('club-filter');
+    const positionFilter = document.getElementById('position-filter');
+    const ageFilter = document.getElementById('age-filter');
+    const clearFiltersButton = document.getElementById('clear-filters');
+
+    [playerSearch, clubFilter, positionFilter, ageFilter].forEach(filter => {
+        filter.addEventListener('change', applyFilters);
+    });
+
+    playerSearch.addEventListener('input', applyFilters);
+    clearFiltersButton.addEventListener('click', clearFilters);
+}
+
+
+function applyFilters() {
+    const searchTerm = document.getElementById('player-search').value.toLowerCase();
+    const clubFilter = document.getElementById('club-filter').value;
+    const positionFilter = document.getElementById('position-filter').value;
+    const ageFilter = document.getElementById('age-filter').value;
+
+    const filteredPlayers = playerData.filter(player => {
+        const matchesSearch = player.Player.toLowerCase().includes(searchTerm);
+        const matchesClub = !clubFilter || player.teamName === clubFilter;
+        const matchesPosition = !positionFilter || (positionCategories[positionFilter] && positionCategories[positionFilter].includes(player.Position)) || player.Position === 'N/A';
+        const matchesAge = !ageFilter || checkAgeFilter(player.Age, ageFilter);
+
+        return matchesSearch && matchesClub && matchesPosition && matchesAge;
+    }).map(player => player.Player);
+
+    displayFullRankings(filteredPlayers);
+}
+
+function checkAgeFilter(age, filter) {
+    age = parseInt(age);
+    switch (filter) {
+        case 'U20':
+            return age <= 20;
+        case 'U23':
+            return age <= 23;
+        case 'U30':
+            return age <= 30;
+        default:
+            return true;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', loadData);

@@ -14,7 +14,25 @@
         </ul>
     </nav>
     <h1 class="title">Full Player Rankings</h1>
-    <div class="tabs">
+<div class="filters">
+    <input type="text" id="player-search" placeholder="Search player...">
+    <select id="club-filter">
+        <option value="">All Clubs</option>
+    </select>
+    <select id="position-filter">
+        <option value="">All Positions</option>
+        <option value="Defenders">Defenders</option>
+        <option value="Midfielders">Midfielders</option>
+        <option value="Attackers">Attackers</option>
+    </select>
+    <select id="age-filter">
+        <option value="">All Ages</option>
+        <option value="U20">U20</option>
+        <option value="U23">U23</option>
+        <option value="U30">U30</option>
+    </select>
+    <button id="clear-filters">Clear Filters</button>
+</div>    <div class="tabs">
         <button class="tab-button active" data-tab="total-distance">Total Distance</button>
         <button class="tab-button" data-tab="hsr-distance">HSR Distance</button>
         <button class="tab-button" data-tab="sprint-distance">Sprint Distance</button>
