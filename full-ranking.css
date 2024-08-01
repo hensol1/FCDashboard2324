@@ -188,8 +188,8 @@ tr:hover {
 }
 
 .filters {
-    display: flex;
     margin-bottom: 20px;
+    text-align: center
 }
 
 .filters input, .filters select {

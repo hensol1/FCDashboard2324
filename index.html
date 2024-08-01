@@ -17,23 +17,51 @@
 
     <h1 class="title">FCdashboard</h1>
 
-    <div class="container">
-        <div class="left-column">
-<div id="fixtures" class="section">
-    <h2>Fixtures</h2>
-    <div class="dropdown">
-        <label for="matchday-select">Select Matchday:</label>
-        <select id="matchday-select">
-            <!-- Options will be populated dynamically -->
-        </select>
-    </div>
-    <div id="fixtures-content"></div>
-</div>
+    <div class="grid-container">
+        <section id="player-stats-section" class="top-left">
+            <div id="player-stats" class="section">
+                <div class="header-container">
+                <h2>Top 5 Fitness Data</h2>
+                <button class="full-ranking" onclick="window.location.href='full-rankings.html'">View Full Ranking</button>
+                    </div>
+                <div class="tabs">
+                    `<button class="tab-button active" data-tab="player-match-record">Player Match Record</button>
+                    <button class="tab-button" data-tab="player-best-avg">Player Best Avg.</button>
+                </div>
+                <div id="player-match-record" class="tab-content active">
+                    <div id="total-distance"></div>
+                    <div id="hsr-distance"></div>
+                    <div id="sprint-distance"></div>
+                </div>
+                <div id="player-best-avg" class="tab-content"></div>
+                <div id="team-match-record" class="tab-content"></div>
+                <div id="team-best-avg" class="tab-content"></div>
+            </div>
+                
+        </section>
+
+        <section id="future-section" class="top-right">
+            <!-- Placeholder for future content -->
+            <div class="section">
+                <h2>Future Content</h2>
+                <p>This section is reserved for future content.</p>
+            </div>
+        </section>
+
+        <section id="lower-left-section" class="bottom-left">
+            <div id="fixtures" class="section">
+                <h2>Fixtures</h2>
+                <div class="dropdown">
+                    Select Matchday:
+                    <select id="matchday-select"></select>
+                </div>
+                <div id="fixtures-content"></div>
+            </div>
 
             <div id="standings" class="section">
                 <h2>Standings</h2>
                 <div class="dropdown">
-                    <label for="season">Select Season:</label>
+                    Select Season:
                     <select id="season">
                         <option value="23_24">23-24</option>
                         <option value="24_25">24-25</option>
@@ -41,27 +69,8 @@
                 </div>
                 <div id="content1"></div>
             </div>
-        </div>
-
-        <div class="right-column">
-<div id="player-stats" class="section">
-  <h2>Top 5 Fitness Data</h2>
-      <button id="full-rankings-btn" onclick="window.location.href='full-rankings.html'">View Full Rankings</button>
-  <div class="tabs">
-    <button class="tab-button active" data-tab="player-match-record">Player Match Record</button>
-    <button class="tab-button" data-tab="player-best-avg">Player Best Avg.</button>
-  </div>
-  <div id="player-match-record" class="tab-content active">
-    <div id="total-distance"></div>
-    <div id="hsr-distance"></div>
-    <div id="sprint-distance"></div>
-  </div>
-  <div id="player-best-avg" class="tab-content"></div>
-  <div id="team-match-record" class="tab-content"></div>
-  <div id="team-best-avg" class="tab-content"></div>
-</div>
+        </section>
     </div>
-        </div>
 
     <script src="script.js"></script>
 </body>

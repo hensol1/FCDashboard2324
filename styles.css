@@ -1,3 +1,4 @@
+/* Global Styles */
 :root {
     --primary-color: #3498db;
     --secondary-color: #2c3e50;
@@ -17,33 +18,7 @@ body {
     text-align: center;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    font-size: 12px;
-    width: auto
-}
-
-.left-column, .right-column {
-    width: 48%;
-}
-
-.section {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    
-}
-
-.section h2 {
-    margin-top: 0;
-    color: var(--primary-color);
-    
-}
-/* Navigation styles */
+/* Navigation Styles */
 nav {
     background-color: var(--secondary-color);
     padding: 1rem;
@@ -72,19 +47,161 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr);
+    grid-template-rows: auto;
+    gap: 15px;
+    padding: 15px;
+}
+
+.top-left {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.top-right {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.bottom-left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* Section Styles */
+.section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+}
+
+.section h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* Player Stats Section */
+#player-stats-section {
+    padding: 10px;
+}
+
+#player-stats {
+    margin-bottom: 0;
+}
+
+#player-stats .tab-content {
+    overflow-x: auto;
+}
+
+#player-stats table {
+    width: auto;
+    margin-bottom: 20px;
+}
+
+#player-stats th,
+#player-stats td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+#player-stats .player-cell {
+    width: auto;
+    max-width: 200px;
+}
+
+#player-stats .team-cell {
+    width: auto;
+    max-width: 150px;
+}
+
+
+/* Future Section */
+#future-section {
+    padding: 10px;
+}
+
+/* Lower Left Section */
+#lower-left-section {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 100%;
+}
+
+#fixtures, #standings {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Fixtures Section */
+
+
+#fixtures-content table {
+     padding: 10px;
+}
+
+#fixtures h2 {
+    margin-bottom: 5px;
+}
+
+#fixtures .dropdown {
+    margin-bottom: -12px;
+}
+
+#fixtures-content th, #fixtures-content td {
+    padding: 2px 4px;
+}
+
+#fixtures-content th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#fixtures-content tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#fixtures-content tr:hover {
+    background-color: #ddd;
+}
+
+
+
 /* Table Styles */
+
+#standings {
+    padding: 10px;
+}
+
 table {
-  width: auto;
-  max-width: 100%;
-  border-collapse: collapse;
-  text-align: left;
+    width: auto;
+    max-width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: fixed;
 }
 
 th, td {
-  padding: 4px 8px;
-  vertical-align: middle;
-  white-space: nowrap;
+    padding: 4px 8px;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px
 }
+
 th {
     background-color: var(--primary-color);
     color: white;
@@ -100,10 +217,9 @@ tr:hover {
     background-color: #ddd;
 }
 
-
-/* Dropdown styles */
+/* Dropdown Styles */
 .dropdown {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 select {
@@ -113,82 +229,45 @@ select {
     border: 1px solid #ccc;
 }
 
-#fixtures-content table {
-    width: auto;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 12px;
-}
-
-#fixtures-content th, #fixtures-content td {
-    padding: 2px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-#fixtures-content th {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-#fixtures-content tr:nth-child(even) {
-    background-color: #f2f2f2;
-
-}
-
-#fixtures-content tr:hover {
-    background-color: #ddd;
-}
-
 /* Highlight Styles */
 .highlight-green {
-  background-color: rgba(40, 167, 69, 0.2) !important;
+    background-color: rgba(40, 167, 69, 0.2) !important;
 }
 
 .highlight-green td:first-child {
-  border-left: 4px solid #28a745;
+    border-left: 4px solid #28a745;
 }
 
 .highlight-red {
-  background-color: rgba(220, 53, 69, 0.2) !important;
+    background-color: rgba(220, 53, 69, 0.2) !important;
 }
 
 .highlight-red td:first-child {
-  border-left: 4px solid #dc3545;
+    border-left: 4px solid #dc3545;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .left-column, .right-column {
-        width: 100%;
-    }
-}
-
+/* Player and Team Cell Styles */
 .player-cell {
-  width: 200px; /* Adjust this width as needed */
+    width: 200px;
 }
 
 .player-info {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .player-image {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 10px;
-  flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
 }
 
 .player-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .team-cell a {
@@ -203,21 +282,49 @@ select {
 }
 
 .team-logo-small {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    flex-shrink: 0;
 }
 
 .team-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tab Styles */
+.full-ranking {
+    background-color: #af4c4f; /* Green background */
+    color: white; /* White text */
+    padding: 6px;
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer; /* Pointer cursor on hover */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds a shadow for depth */
+    font-weight: bold; /* Makes the text bold */
+}
+
+
+/* Hover effect */
+.full-ranking:hover {
+    background-color: #45a049; /* Darker green when hovered */
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .tabs {
-    display: flex;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: -11px;
 }
 
 .tab-button {
@@ -239,4 +346,33 @@ select {
 
 .tab-content.active {
     display: block;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .top-left, .top-right, .bottom-left {
+        grid-column: 1;
+    }
+
+    .top-left {
+        grid-row: 1;
+    }
+
+    .top-right {
+        grid-row: 2;
+    }
+
+    .bottom-left {
+        grid-row: 3;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+    }
 }
