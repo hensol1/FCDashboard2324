@@ -11,9 +11,10 @@ const positionCategories = {
 function createPlayerNameMapping() {
     playerNameMapping = {};
     playerData.forEach(player => {
-        playerNameMapping[player.Player] = player.playerFullName;
+        playerNameMapping[player.playerFullName] = player.Player;
     });
 }
+
 
 function loadData() {
     Promise.all([
@@ -35,12 +36,15 @@ function loadData() {
 function calculatePlayerAverages(data) {
     const playerAverages = {};
     data.forEach(entry => {
-        if (!playerAverages[entry.Player]) {
-            const playerInfo = playerData.find(p => p.Player === entry.Player);
-            playerAverages[entry.Player] = {
-                Team: entry.Team,
-                Position: playerInfo ? playerInfo.Position : 'N/A',
-                Age: playerInfo ? playerInfo.Age : 'N/A',
+        const playerInfo = playerData.find(p => p.Player === entry.Player);
+        if (!playerInfo) return;
+        
+        const fullName = playerInfo.playerFullName;
+        if (!playerAverages[fullName]) {
+            playerAverages[fullName] = {
+                Team: playerInfo.teamName,
+                Position: playerInfo.Position,
+                Age: playerInfo.Age,
                 TotalDistance: 0,
                 HsrDistance: 0,
                 SprintDistance: 0,
@@ -48,11 +52,11 @@ function calculatePlayerAverages(data) {
                 MatchCount: 0
             };
         }
-        playerAverages[entry.Player].TotalDistance += entry.TotalDistance;
-        playerAverages[entry.Player].HsrDistance += entry.HsrDistance;
-        playerAverages[entry.Player].SprintDistance += entry.SprintDistance;
-        playerAverages[entry.Player].TotalMinutes += entry.Minutes;
-        playerAverages[entry.Player].MatchCount++;
+        playerAverages[fullName].TotalDistance += entry.TotalDistance;
+        playerAverages[fullName].HsrDistance += entry.HsrDistance;
+        playerAverages[fullName].SprintDistance += entry.SprintDistance;
+        playerAverages[fullName].TotalMinutes += entry.Minutes;
+        playerAverages[fullName].MatchCount++;
     });
 
     Object.keys(playerAverages).forEach(player => {
@@ -96,25 +100,25 @@ function displayFullRankings(filteredPlayers = null) {
         let html = '<table class="compact-table">';
         html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th><th>Average</th><th>Matches</th></tr>';
 
-        sortedPlayers.forEach((player, index) => {
-            const [playerName, stats] = player;
-            const fullName = playerNameMapping[playerName] || playerName;
-            html += `<tr>
-                <td>${index + 1}</td>
-                <td class="player-cell">
-                    <img src="player-images/${fullName.replace(/ /g, '_')}.webp" alt="${fullName}" class="player-image" onerror="this.onerror=null; this.src='player-images/default.webp';">
-                    <span class="player-name">${playerName}</span>
-                </td>
-                <td class="team-cell">
-                    <img src="${getTeamLogoUrl(stats.Team)}" alt="${stats.Team} logo" class="team-logo-small">
-                    <a href="${getTeamPageUrl(stats.Team)}" class="team-name">${stats.Team}</a>
-                </td>
-                <td>${stats.Position}</td>
-                <td>${stats.Age}</td>
-                <td>${stats[category].toFixed(2)}</td>
-                <td>${stats.MatchCount}</td>
-            </tr>`;
-        });
+    sortedPlayers.forEach((player, index) => {
+        const [playerFullName, stats] = player;
+        const shortName = playerNameMapping[playerFullName] || playerFullName;
+        html += `<tr>
+            <td>${index + 1}</td>
+            <td class="player-cell">
+                <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" alt="${playerFullName}" class="player-image" onerror="this.onerror=null; this.src='player-images/default.webp';">
+                <span class="player-name">${shortName}</span>
+            </td>
+            <td class="team-cell">
+                <img src="${getTeamLogoUrl(stats.Team)}" alt="${stats.Team} logo" class="team-logo-small">
+                <a href="${getTeamPageUrl(stats.Team)}" class="team-name">${stats.Team}</a>
+            </td>
+            <td>${stats.Position}</td>
+            <td>${stats.Age}</td>
+            <td>${stats[category].toFixed(2)}</td>
+            <td>${stats.MatchCount}</td>
+        </tr>`;
+    });
 
         html += '</table>';
 
@@ -192,13 +196,13 @@ function applyFilters() {
     const ageFilter = document.getElementById('age-filter').value;
 
     const filteredPlayers = playerData.filter(player => {
-        const matchesSearch = player.Player.toLowerCase().includes(searchTerm);
+        const matchesSearch = player.playerFullName.toLowerCase().includes(searchTerm);
         const matchesClub = !clubFilter || player.teamName === clubFilter;
         const matchesPosition = !positionFilter || (positionCategories[positionFilter] && positionCategories[positionFilter].includes(player.Position)) || player.Position === 'N/A';
         const matchesAge = !ageFilter || checkAgeFilter(player.Age, ageFilter);
 
         return matchesSearch && matchesClub && matchesPosition && matchesAge;
-    }).map(player => player.Player);
+    }).map(player => player.playerFullName);
 
     displayFullRankings(filteredPlayers);
 }
