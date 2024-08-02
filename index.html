@@ -15,17 +15,17 @@
         </ul>
     </nav>
 
-    <h1 class="title">FCdashboard</h1>
+    <h1 id="fcdashboard" class="title">FCdashboard</h1>
 
     <div class="grid-container">
-        <section id="player-stats-section" class="top-left">
+        <div id="player-stats-section" class="section top-left">
             <div id="player-stats" class="section">
                 <div class="header-container">
-                <h2>Top 5 Fitness Data</h2>
-                <button class="full-ranking" onclick="window.location.href='full-rankings.html'">View Full Ranking</button>
-                    </div>
+                    <h2>Top 5 Fitness Data</h2>
+                    <a href="full-rankings.html" class="full-ranking">View Full Ranking</a>
+                </div>
                 <div class="tabs">
-                    `<button class="tab-button active" data-tab="player-match-record">Player Match Record</button>
+                    <button class="tab-button active" data-tab="player-match-record">Player Match Record</button>
                     <button class="tab-button" data-tab="player-best-avg">Player Best Avg.</button>
                 </div>
                 <div id="player-match-record" class="tab-content active">
@@ -34,25 +34,33 @@
                     <div id="sprint-distance"></div>
                 </div>
                 <div id="player-best-avg" class="tab-content"></div>
-                <div id="team-match-record" class="tab-content"></div>
-                <div id="team-best-avg" class="tab-content"></div>
             </div>
-                
-        </section>
+        </div>
 
-        <section id="future-section" class="top-right">
-            <!-- Placeholder for future content -->
+        <div id="future-section" class="section top-right">
             <div class="section">
-                <h2>Future Content</h2>
-                <p>This section is reserved for future content.</p>
+                <div class="header-container">
+                <h2>Player Availability</h2>
+                  <a href="full-availability.html" class="full-ranking">View Full Availability</a>
+                    </div>
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="use-content">% Use</button>
+                    <button class="tab-button" data-tab="availability-content">Availability</button>
+                    <button class="tab-button" data-tab="utilization-content">Utilization</button>
+                </div>
+                <div id="availability-wrapper">
+                    <div id="use-content" class="tab-content active"></div>
+                    <div id="availability-content" class="tab-content"></div>
+                    <div id="utilization-content" class="tab-content"></div>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <section id="lower-left-section" class="bottom-left">
+        <div id="lower-left-section" class="section bottom-left">
             <div id="fixtures" class="section">
                 <h2>Fixtures</h2>
                 <div class="dropdown">
-                    Select Matchday:
+                    <label for="matchday-select">Select Matchday:</label>
                     <select id="matchday-select"></select>
                 </div>
                 <div id="fixtures-content"></div>
@@ -61,7 +69,7 @@
             <div id="standings" class="section">
                 <h2>Standings</h2>
                 <div class="dropdown">
-                    Select Season:
+                    <label for="season">Select Season:</label>
                     <select id="season">
                         <option value="23_24">23-24</option>
                         <option value="24_25">24-25</option>
@@ -69,7 +77,7 @@
                 </div>
                 <div id="content1"></div>
             </div>
-        </section>
+        </div>
     </div>
 
     <script src="script.js"></script>

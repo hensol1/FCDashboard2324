@@ -11,7 +11,6 @@ function createPlayerNameMapping() {
     console.log('Player name mapping created:', playerNameMapping);
 }
 
-
 const shortNameMapping = {
     'M. Tel Aviv': 'Maccabi Tel Aviv',
     'H. Tel Aviv': 'Hapoel Tel Aviv',
@@ -54,10 +53,42 @@ document.addEventListener('DOMContentLoaded', function() {
     updateStandings();
     loadGPSData();
     loadFixtures();
+    loadAvailabilityData();
 
     // Add event listener for season change
     document.getElementById('season').addEventListener('change', updateStandings);
+
+    // Set up tabs for player stats and availability sections
+    setupTabs('player-stats');
+    setupTabs('future-section');
 });
+
+function setupTabs(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error(`Container with id ${containerId} not found`);
+        return;
+    }
+    const tabs = container.querySelectorAll('.tab-button');
+    const contents = container.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-tab');
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            
+            tab.classList.add('active');
+            const targetContent = document.getElementById(target);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            } else {
+                console.error(`Target content #${target} not found`);
+            }
+        });
+    });
+}
 
 function loadFixtures() {
     fetch('fixtures.json')
@@ -105,25 +136,24 @@ async function displayFixtures(selectedMatchday) {
         const homeTeam = shortNameMapping[homeTeamClean] || homeTeamClean;
         const awayTeam = shortNameMapping[awayTeamClean] || awayTeamClean;
         
-        const homeLogoUrl = await getTeamLogoUrl(homeTeam);
-        const awayLogoUrl = await getTeamLogoUrl(awayTeam);
+        const homeLogoUrl = getTeamLogoUrl(homeTeam);
+        const awayLogoUrl = getTeamLogoUrl(awayTeam);
         
-html += `<tr>
-    <td class="team-cell">
-        <a href="${getTeamPageUrl(homeTeam)}">
-            <img src="${homeLogoUrl}" alt="${homeTeam} logo" class="team-logo-small">
-            <span class="team-name">${fixture.home_team}</span>
-        </a>
-    </td>
-    <td>${fixture.score}</td>
-    <td class="team-cell">
-        <a href="${getTeamPageUrl(awayTeam)}">
-            <img src="${awayLogoUrl}" alt="${awayTeam} logo" class="team-logo-small">
-            <span class="team-name">${fixture.away_team}</span>
-        </a>
-    </td>
-</tr>`;
-
+        html += `<tr>
+            <td class="team-cell">
+                <a href="${getTeamPageUrl(homeTeam)}">
+                    <img src="${homeLogoUrl}" alt="${homeTeam} logo" class="team-logo-small">
+                    <span class="team-name">${fixture.home_team}</span>
+                </a>
+            </td>
+            <td>${fixture.score}</td>
+            <td class="team-cell">
+                <a href="${getTeamPageUrl(awayTeam)}">
+                    <img src="${awayLogoUrl}" alt="${awayTeam} logo" class="team-logo-small">
+                    <span class="team-name">${fixture.away_team}</span>
+                </a>
+            </td>
+        </tr>`;
     }
     
     html += '</table>';
@@ -178,57 +208,6 @@ function calculatePlayerAverages(data) {
     return playerAverages;
 }
 
-function calculateTeamStats(data) {
-    const teamStats = {};
-    data.forEach(entry => {
-        const key = `${entry.Team}-${entry.Matchday}`;
-        if (!teamStats[key]) {
-            teamStats[key] = {
-                Team: entry.Team,
-                Matchday: entry.Matchday,
-                Opponent: entry.Opponent,
-                TotalDistance: 0,
-                HsrDistance: 0,
-                SprintDistance: 0,
-                PlayerCount: 0
-            };
-        }
-        teamStats[key].TotalDistance += entry.TotalDistance;
-        teamStats[key].HsrDistance += entry.HsrDistance;
-        teamStats[key].SprintDistance += entry.SprintDistance;
-        teamStats[key].PlayerCount++;
-    });
-    return Object.values(teamStats);
-}
-
-function calculateTeamAverages(teamStats) {
-    const teamAverages = {};
-    teamStats.forEach(stat => {
-        if (!stat.Team) return; // Skip if Team is undefined
-        if (!teamAverages[stat.Team]) {
-            teamAverages[stat.Team] = {
-                TotalDistance: 0,
-                HsrDistance: 0,
-                SprintDistance: 0,
-                MatchCount: 0
-            };
-        }
-        teamAverages[stat.Team].TotalDistance += stat.TotalDistance || 0;
-        teamAverages[stat.Team].HsrDistance += stat.HsrDistance || 0;
-        teamAverages[stat.Team].SprintDistance += stat.SprintDistance || 0;
-        teamAverages[stat.Team].MatchCount++;
-    });
-
-    Object.keys(teamAverages).forEach(team => {
-        const avg = teamAverages[team];
-        avg.TotalDistance = avg.TotalDistance / avg.MatchCount;
-        avg.HsrDistance = avg.HsrDistance / avg.MatchCount;
-        avg.SprintDistance = avg.SprintDistance / avg.MatchCount;
-    });
-
-    return teamAverages;
-}
-
 function displayTopPlayers() {
     console.log('displayTopPlayers function called');
     const categories = ['TotalDistance', 'HsrDistance', 'SprintDistance'];
@@ -247,18 +226,8 @@ function displayTopPlayers() {
         console.log(`Processing category: ${category}`);
         displayCategoryData(category, categoryNames[category], gpsData, playerAverages);
     }
-
-    // Add event listeners for tab buttons
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('Tab button clicked:', button.getAttribute('data-tab'));
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            button.classList.add('active');
-            document.getElementById(button.getAttribute('data-tab')).classList.add('active');
-        });
-    });
 }
+
 function displayCategoryData(category, categoryName, gpsData, playerAverages) {
     console.log(`displayCategoryData called for ${category}`);
     const playerMatchRecord = gpsData
@@ -293,6 +262,7 @@ function displayCategoryData(category, categoryName, gpsData, playerAverages) {
         }
     });
 }
+
 function createTable(data, category, categoryName, entityType, isAverage = false) {
     console.log(`createTable called for ${category}, ${entityType}, isAverage: ${isAverage}`);
     try {
@@ -369,6 +339,144 @@ function createTable(data, category, categoryName, entityType, isAverage = false
         return `<p>Error generating table: ${error.message}</p>`;
     }
 }
+
+/*availbility*/
+
+function loadAvailabilityData() {
+  fetch('Availability.json')
+    .then(response => response.json())
+    .then(data => {
+      displayAvailabilityData(data);
+    })
+    .catch(error => console.error('Error loading Availability data:', error));
+}
+
+function displayAvailabilityData(data) {
+  const categories = ['% Use', 'Availability', 'Utilization'];
+  
+  categories.forEach(category => {
+    const sortedData = data.sort((a, b) => {
+      const valueA = parseFloat(a[category].replace('%', '')) || 0;
+      const valueB = parseFloat(b[category].replace('%', '')) || 0;
+      return valueB - valueA;
+    });
+
+    const top3 = sortedData.slice(0, 3);
+    
+    // Find the bottom 3 players with actual names
+    const bottom3 = sortedData.filter(player => player.Name && player.Name !== "Unknown Player")
+                              .slice(-3)
+                              .reverse();
+
+    const contentId = category.toLowerCase().replace('% ', '') + '-content';
+    const content = document.getElementById(contentId);
+    if (!content) {
+      console.error(`Element with id ${contentId} not found`);
+      return;
+    }
+
+    let html = `<h3>${category}</h3><table class="compact-table">
+      <tr>
+        <th>Player</th>
+        <th>${category}</th>
+      </tr>
+      <tr class="category-header">
+        <td colspan="2">Top 3 Players</td>
+      </tr>`;
+    
+    top3.forEach(player => {
+      html += createAvailabilityPlayerRow(player, category);
+    });
+    
+    html += `<tr class="category-header">
+      <td colspan="2">Bottom 3 Players</td>
+    </tr>`;
+    
+    bottom3.forEach(player => {
+      html += createAvailabilityPlayerRow(player, category);
+    });
+    
+    html += '</table>';
+    content.innerHTML = html;
+  });
+}
+
+function createAvailabilityPlayerRow(player, category) {
+  const playerName = player.Name || 'Unknown Player';
+  const playerFullName = playerNameMapping[playerName] || playerName;
+  const value = player[category] || '0%';
+  
+  return `<tr>
+    <td class="player-cell">
+      <div class="player-info">
+        <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+             alt="${playerFullName}" 
+             class="player-image" 
+             onerror="this.onerror=null; this.src='player-images/default.webp';">
+        <span class="player-name">${playerName}</span>
+      </div>
+    </td>
+    <td>${value}</td>
+  </tr>`;
+}
+
+function createPlayerRow(player, category) {
+  const playerName = player.Name || 'Unknown Player';
+  const playerFullName = playerNameMapping[playerName] || playerName;
+  const value = player[category] || 'N/A';
+  
+  return `<tr>
+    <td class="player-cell">
+      <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+           alt="${playerFullName}" 
+           class="player-image" 
+           onerror="this.onerror=null; this.src='player-images/default.webp';">
+      <span>${playerName}</span>
+    </td>
+    <td>${value}</td>
+  </tr>`;
+}
+
+// Update the document.addEventListener('DOMContentLoaded', ...) function
+document.addEventListener('DOMContentLoaded', function() {
+  updateStandings();
+  loadGPSData();
+  loadFixtures();
+  loadAvailabilityData(); // Add this line to load the Availability data
+
+
+
+
+  // Add event listener for season change
+  document.getElementById('season').addEventListener('change', updateStandings);
+    
+      // Set up tabs for player stats and availability sections
+  setupTabs('player-stats');
+  setupTabs('future-section');
+
+    
+    // Add event listeners for player stats tab buttons
+document.querySelectorAll('#player-stats .tab-button').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('#player-stats .tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('#player-stats .tab-content').forEach(content => content.classList.remove('active'));
+    button.classList.add('active');
+    document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+  });
+});
+
+
+// Add event listeners for availability tab buttons
+document.querySelectorAll('#future-section .tab-button').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('#future-section .tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('#future-section .tab-content').forEach(content => content.classList.remove('active'));
+    button.classList.add('active');
+    document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+  });
+});
+
+});
 
 async function updateStandings() {
     const season = document.getElementById('season').value;
