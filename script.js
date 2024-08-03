@@ -592,9 +592,6 @@ function displayTrainingData(data) {
 
   displayTrainingTable(sortedByPercent.slice(0, 5), 'training-percent', '% Miss');
   displayTrainingTable(sortedByTotal.slice(0, 5), 'training-total', 'Total');
-
-  // Set up tab switching for training data
-  setupTabs('future-section');
 }
 
 function displayTrainingTable(data, contentId, sortColumn) {
@@ -618,6 +615,7 @@ function displayTrainingTable(data, contentId, sortColumn) {
   html += '</table>';
   content.innerHTML = html;
 }
+
 
 function createTrainingPlayerRow(player) {
   const playerName = player.Name || 'Unknown Player';
