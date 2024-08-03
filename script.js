@@ -569,7 +569,7 @@ function prepareFullRankingsData() {
 }
 
 function loadTrainingData() {
-  fetch('training.json')
+  fetch('Training.json')
     .then(response => response.json())
     .then(data => {
       // Filter out empty entries and entries without a Name
