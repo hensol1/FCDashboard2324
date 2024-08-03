@@ -373,3 +373,20 @@ select {
         width: 100%;
     }
 }
+
+#future-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#future-section .section {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  #future-section .section {
+    width: 100%;
+  }
+}

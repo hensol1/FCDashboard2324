@@ -54,13 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
     loadGPSData();
     loadFixtures();
     loadAvailabilityData();
+    loadTrainingData();
 
     // Add event listener for season change
     document.getElementById('season').addEventListener('change', updateStandings);
 
-    // Set up tabs for player stats and availability sections
-    setupTabs('player-stats');
-    setupTabs('future-section');
+
 });
 
 function setupTabs(containerId) {
@@ -80,7 +79,7 @@ function setupTabs(containerId) {
             contents.forEach(c => c.classList.remove('active'));
             
             tab.classList.add('active');
-            const targetContent = document.getElementById(target);
+            const targetContent = container.querySelector(`#${target}`);
             if (targetContent) {
                 targetContent.classList.add('active');
             } else {
@@ -567,4 +566,76 @@ function getTeamPageUrl(teamName) {
 function prepareFullRankingsData() {
     const playerAverages = calculatePlayerAverages(gpsData);
     return playerAverages;
+}
+
+function loadTrainingData() {
+  fetch('training.json')
+    .then(response => response.json())
+    .then(data => {
+      // Filter out empty entries and entries without a Name
+      const filteredData = data.filter(player => player.Name && player.Name.trim() !== "");
+      displayTrainingData(filteredData);
+    })
+    .catch(error => console.error('Error loading Training data:', error));
+}
+
+function displayTrainingData(data) {
+  const sortedByPercent = [...data].sort((a, b) => {
+    const valueA = parseFloat(a['% Miss'].replace('%', '')) || 0;
+    const valueB = parseFloat(b['% Miss'].replace('%', '')) || 0;
+    return valueB - valueA;
+  });
+
+  const sortedByTotal = [...data].sort((a, b) => {
+    return parseInt(b.Total) - parseInt(a.Total);
+  });
+
+  displayTrainingTable(sortedByPercent.slice(0, 5), 'training-percent', '% Miss');
+  displayTrainingTable(sortedByTotal.slice(0, 5), 'training-total', 'Total');
+
+  // Set up tab switching for training data
+  setupTabs('future-section');
+}
+
+function displayTrainingTable(data, contentId, sortColumn) {
+  const content = document.getElementById(contentId);
+  if (!content) {
+    console.error(`Element with id ${contentId} not found`);
+    return;
+  }
+
+  let html = `<h3>Top 5 Training Missed </h3><table class="compact-table">
+    <tr>
+      <th>Player</th>
+      <th>% Miss</th>
+      <th>Total</th>
+    </tr>`;
+
+  data.forEach(player => {
+    html += createTrainingPlayerRow(player);
+  });
+
+  html += '</table>';
+  content.innerHTML = html;
+}
+
+function createTrainingPlayerRow(player) {
+  const playerName = player.Name || 'Unknown Player';
+  const playerFullName = playerNameMapping[playerName] || playerName;
+  const percentMiss = player['% Miss'] || '0%';
+  const total = player.Total || '0';
+
+  return `<tr>
+    <td class="player-cell">
+      <div class="player-info">
+        <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+             alt="${playerFullName}" 
+             class="player-image" 
+             onerror="this.onerror=null; this.src='player-images/default.webp';">
+        <span class="player-name">${playerName}</span>
+      </div>
+    </td>
+    <td>${percentMiss}</td>
+    <td>${total}</td>
+  </tr>`;
 }
