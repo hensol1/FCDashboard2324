@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFixtures();
     loadAvailabilityData();
     loadTrainingData();
+    loadNutritionData();
 
     // Add event listener for season change
     document.getElementById('season').addEventListener('change', updateStandings);
@@ -674,4 +675,122 @@ function createTrainingPlayerRow(player) {
     <td>${percentMiss}</td>
     <td>${total}</td>
   </tr>`;
+}
+
+function loadNutritionData() {
+    fetch('nutrition.json')
+        .then(response => response.json())
+        .then(data => {
+            displayNutritionData(data);
+        })
+        .catch(error => console.error('Error loading Nutrition data:', error));
+}
+
+function displayNutritionData(data) {
+    const sortedByWeightDiff = [...data].sort((a, b) => parseFloat(b['Weight diff'].replace('%', '')) - parseFloat(a['Weight diff'].replace('%', '')));
+    const sortedByFat = [...data].sort((a, b) => b['Current Fat'] - a['Current Fat']);
+
+    const worstWeightDiff = sortedByWeightDiff.filter(player => parseFloat(player['Weight diff'].replace('%', '')) >= 2.1).slice(0, 3);
+    const worstFat = sortedByFat.filter(player => player['Current Fat'] >= 10.5).slice(0, 3);
+
+    const content = document.getElementById('nutrition-content');
+    if (!content) {
+        console.error('Nutrition content element not found');
+        return;
+    }
+
+    let html = `<h3>Weight Difference Concerns</h3>
+                <table class="compact-table">
+                    <tr>
+                        <th>Player</th>
+                        <th>Weight Diff</th>
+                    </tr>`;
+
+    worstWeightDiff.forEach(player => {
+        html += createNutritionPlayerRowSimple(player, 'Weight diff');
+    });
+
+    html += `</table><h3>Fat Percentage Concerns</h3>
+             <table class="compact-table">
+                <tr>
+                    <th>Player</th>
+                    <th>Current Fat</th>
+                </tr>`;
+
+    worstFat.forEach(player => {
+        html += createNutritionPlayerRowSimple(player, 'Current Fat');
+    });
+
+    html += '</table>';
+    content.innerHTML = html;
+}
+
+function createNutritionPlayerRowSimple(player, dataColumn) {
+    const playerName = player.Name || 'Unknown Player';
+    const playerFullName = playerNameMapping[playerName] || playerName;
+    const value = player[dataColumn];
+    
+    let cellClass = '';
+    if (dataColumn === 'Weight diff') {
+        const weightDiff = parseFloat(value.replace('%', ''));
+        if (weightDiff >= 5) cellClass = 'dark-red';
+        else if (weightDiff >= 2.1) cellClass = 'light-red';
+        else if (weightDiff >= -2 && weightDiff <= 1.9) cellClass = 'green';
+        else if (weightDiff >= -5 && weightDiff <= -2.1) cellClass = 'light-yellow';
+        else if (weightDiff < -5) cellClass = 'orange';
+    } else if (dataColumn === 'Current Fat') {
+        const currentFat = parseFloat(value);
+        if (currentFat > 12) cellClass = 'dark-red';
+        else if (currentFat > 10.5) cellClass = 'light-red';
+        else cellClass = 'green';
+    }
+
+    return `<tr>
+        <td class="player-cell">
+            <div class="player-info">
+                <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+                     alt="${playerFullName}" 
+                     class="player-image" 
+                     onerror="this.onerror=null; this.src='player-images/default.webp';">
+                <span class="player-name">${playerName}</span>
+            </div>
+        </td>
+        <td class="${cellClass}">${value}</td>
+    </tr>`;
+}
+
+function createFullNutritionPlayerRow(player) {
+    const playerName = player.Name || 'Unknown Player';
+    const playerFullName = playerNameMapping[playerName] || playerName;
+    const weightDiff = parseFloat(player['Weight diff'].replace('%', ''));
+    const currentFat = player['Current Fat'];
+
+    let weightDiffClass = '';
+    if (weightDiff >= 5) weightDiffClass = 'dark-red';
+    else if (weightDiff >= 2.1) weightDiffClass = 'light-red';
+    else if (weightDiff >= -2 && weightDiff <= 1.9) weightDiffClass = 'green';
+    else if (weightDiff >= -5 && weightDiff <= -2.1) weightDiffClass = 'light-yellow';
+    else if (weightDiff < -5) weightDiffClass = 'orange';
+
+    let fatClass = '';
+    if (currentFat > 12) fatClass = 'dark-red';
+    else if (currentFat > 10.5) fatClass = 'light-red';
+    else fatClass = 'green';
+
+    return `<tr>
+        <td class="player-cell">
+            <div class="player-info">
+                <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+                     alt="${playerFullName}" 
+                     class="player-image" 
+                     onerror="this.onerror=null; this.src='player-images/default.webp';">
+                <span class="player-name">${playerName}</span>
+            </div>
+        </td>
+        <td class="${weightDiffClass}">${player['Weight diff']}</td>
+        <td class="${fatClass}">${player['Current Fat']}</td>
+        <td>${player['Current Weight']}</td>
+        <td>${player['Min Weight']}</td>
+        <td>${player['Max Weight']}</td>
+    </tr>`;
 }

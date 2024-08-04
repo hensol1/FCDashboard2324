@@ -489,3 +489,56 @@ select {
     color: white;
 }
 
+.green { background-color: #28a745; color: white; }
+.light-red { background-color: #ffc107; color: black; }
+.dark-red { background-color: #dc3545; color: white; }
+.light-yellow { background-color: #fff3cd; color: black; }
+.orange { background-color: #fd7e14; color: white; }
+
+#nutrition-section {
+    margin-top: 20px;
+}
+
+#nutrition-section table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#nutrition-section th,
+#nutrition-section td {
+    padding: 8px;
+    text-align: left;
+}
+
+#nutrition-section .player-cell {
+    width: 200px;
+}
+
+#nutrition-section .compact-table {
+    width: auto;
+    max-width: 100%;
+}
+
+#nutrition-section .compact-table th,
+#nutrition-section .compact-table td {
+    white-space: nowrap;
+    padding: 8px 12px;
+}
+
+#nutrition-section .compact-table .player-cell {
+    width: auto;
+    max-width: 200px;
+}
+
+#nutrition-section .compact-table .player-info {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+#nutrition-section .compact-table .player-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 40px); /* Adjust based on your image size */
+}
