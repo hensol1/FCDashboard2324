@@ -542,3 +542,103 @@ select {
     text-overflow: ellipsis;
     max-width: calc(100% - 40px); /* Adjust based on your image size */
 }
+/*loan players*/
+#loan-players-section {
+    margin-top: 20px;
+}
+
+#loan-players-section table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#loan-players-section th,
+#loan-players-section td {
+    padding: 8px;
+    text-align: left;
+}
+
+#loan-players-section .player-cell {
+    width: 200px;
+}
+
+#loan-players-section .compact-table {
+    width: auto;
+    max-width: 100%;
+}
+
+#loan-players-section .compact-table th,
+#loan-players-section .compact-table td {
+    white-space: nowrap;
+    padding: 8px 12px;
+}
+
+#loan-players-section .compact-table .player-cell {
+    width: auto;
+    max-width: 200px;
+}
+
+#loan-players-section .compact-table .player-info {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+#loan-players-section .compact-table .player-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 40px); /* Adjust based on your image size */
+}
+
+#loan-players-full-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#loan-players-full-section .compact-table {
+    width: 100%;
+}
+
+#loan-players-full-section .compact-table th,
+#loan-players-full-section .compact-table td {
+    padding: 10px;
+}
+
+#loan-players-full-section .compact-table .player-cell {
+    width: 250px;
+}
+
+@media (max-width: 768px) {
+    #loan-players-full-section .compact-table {
+        font-size: 14px;
+    }
+
+    #loan-players-full-section .compact-table th,
+    #loan-players-full-section .compact-table td {
+        padding: 8px 5px;
+    }
+
+    #loan-players-full-section .compact-table .player-cell {
+        width: auto;
+    }
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 100px); /* Adjust based on your nav height */
+    padding: 20px;
+}
+
+#loan-players-full-section {
+    width: 100%;
+    max-width: 1000px; /* Adjust this value as needed */
+}
+
+#loan-players-full-section .compact-table {
+    width: 100%;
+    margin: 0 auto;
+}

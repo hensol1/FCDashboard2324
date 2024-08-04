@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadAvailabilityData();
     loadTrainingData();
     loadNutritionData();
+    loadLoanPlayersData();
 
     // Add event listener for season change
     document.getElementById('season').addEventListener('change', updateStandings);
@@ -792,5 +793,61 @@ function createFullNutritionPlayerRow(player) {
         <td>${player['Current Weight']}</td>
         <td>${player['Min Weight']}</td>
         <td>${player['Max Weight']}</td>
+    </tr>`;
+}
+
+/*Loan Players*/
+function loadLoanPlayersData() {
+    fetch('loanplayers.json')
+        .then(response => response.json())
+        .then(data => {
+            displayLoanPlayersData(data);
+        })
+        .catch(error => console.error('Error loading Loan Players data:', error));
+}
+
+function displayLoanPlayersData(data) {
+    const sortedData = data.sort((a, b) => parseFloat(b.Minutes.replace('%', '')) - parseFloat(a.Minutes.replace('%', '')));
+    const top3Players = sortedData.slice(0, 3);
+
+    const content = document.getElementById('loan-players-content');
+    if (!content) {
+        console.error('Loan Players content element not found');
+        return;
+    }
+
+    let html = `<table class="compact-table">
+                    <tr>
+                        <th>Player</th>
+                        <th>Team</th>
+                        <th>Division</th>
+                        <th>Minutes</th>
+                    </tr>`;
+
+    top3Players.forEach(player => {
+        html += createLoanPlayerRow(player);
+    });
+
+    html += '</table>';
+    content.innerHTML = html;
+}
+
+function createLoanPlayerRow(player) {
+    const playerName = player.Player || 'Unknown Player';
+    const playerFullName = playerNameMapping[playerName] || playerName;
+
+    return `<tr>
+        <td class="player-cell">
+            <div class="player-info">
+                <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+                     alt="${playerFullName}" 
+                     class="player-image" 
+                     onerror="this.onerror=null; this.src='player-images/default.webp';">
+                <span class="player-name">${playerName}</span>
+            </div>
+        </td>
+        <td>${player.Team}</td>
+        <td>${player.Division}</td>
+        <td>${player.Minutes}</td>
     </tr>`;
 }

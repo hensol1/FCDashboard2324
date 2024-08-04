@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full List of Players on Loan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="teams.html">Teams</a></li>
+            <li><a href="full-rankings.html">Fitness Data</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="title">Players on Loan</h1>
+
+<div class="centered-container">
+    <div id="loan-players-full-section" class="section">
+        <div id="loan-players-full-content"></div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFullLoanPlayersData();
+        });
+
+        function loadFullLoanPlayersData() {
+            fetch('loanplayers.json')
+                .then(response => response.json())
+                .then(data => {
+                    displayFullLoanPlayersData(data);
+                })
+                .catch(error => console.error('Error loading Full Loan Players data:', error));
+        }
+
+        function displayFullLoanPlayersData(data) {
+            const sortedData = data.sort((a, b) => parseFloat(b.Minutes.replace('%', '')) - parseFloat(a.Minutes.replace('%', '')));
+
+            const content = document.getElementById('loan-players-full-content');
+            if (!content) {
+                console.error('Full Loan Players content element not found');
+                return;
+            }
+
+            let html = `<table class="compact-table">
+                            <tr>
+                                <th>Player</th>
+                                <th>Position</th>
+                                <th>Team</th>
+                                <th>Division</th>
+                                <th>Minutes</th>
+                            </tr>`;
+
+            sortedData.forEach(player => {
+                html += createFullLoanPlayerRow(player);
+            });
+
+            html += '</table>';
+            content.innerHTML = html;
+        }
+
+        function createFullLoanPlayerRow(player) {
+            const playerName = player.Player || 'Unknown Player';
+            const playerFullName = playerNameMapping[playerName] || playerName;
+
+            return `<tr>
+                <td class="player-cell">
+                    <div class="player-info">
+                        <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+                             alt="${playerFullName}" 
+                             class="player-image" 
+                             onerror="this.onerror=null; this.src='player-images/default.webp';">
+                        <span class="player-name">${playerName}</span>
+                    </div>
+                </td>
+                <td>${player.Position}</td>
+                <td>${player.Team}</td>
+                <td>${player.Division}</td>
+                <td>${player.Minutes}</td>
+            </tr>`;
+        }
+    </script>
+</body>
+</html>
