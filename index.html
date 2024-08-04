@@ -18,36 +18,63 @@
     <h1 id="fcdashboard" class="title">FCdashboard</h1>
 
     <div class="grid-container">
-        <div id="player-stats-section" class="section top-left">
-            <div id="player-stats" class="section">
-                <div class="header-container">
-                    <h2>Top 5 Fitness Data</h2>
-                    <a href="full-rankings.html" class="full-ranking">View Full Ranking</a>
-                </div>
-                <div class="tabs">
-                    <button class="tab-button active" data-tab="player-match-record">Player Match Record</button>
-                    <button class="tab-button" data-tab="player-best-avg">Player Best Avg.</button>
-                </div>
-                <div id="player-match-record" class="tab-content active">
-                    <div id="total-distance"></div>
-                    <div id="hsr-distance"></div>
-                    <div id="sprint-distance"></div>
-                </div>
-                <div id="player-best-avg" class="tab-content"></div>
-            </div>
-        </div>
+<div id="player-stats" class="section">
+  <div class="header-container">
+    <h2>Top 5 Fitness Data</h2>
+    <a href="full-rankings.html" class="full-ranking">View Full Ranking</a>
+  </div>
 
+  <div class="main-tabs">
+    <button class="main-tab-button active" data-tab="all-players">All Players</button>
+    <button class="main-tab-button" data-tab="hapoel-tel-aviv">Hapoel Tel Aviv</button>
+  </div>
+
+  <div id="all-players" class="main-tab-content active">
+    <div class="sub-tabs">
+      <button class="sub-tab-button active" data-tab="player-match-record">Player Match Record</button>
+      <button class="sub-tab-button" data-tab="player-best-avg">Player Best Avg.</button>
+    </div>
+    <div id="player-match-record" class="sub-tab-content active">
+      <div id="total-distance"></div>
+      <div id="hsr-distance"></div>
+      <div id="sprint-distance"></div>
+    </div>
+    <div id="player-best-avg" class="sub-tab-content">
+      <div id="total-distance-avg"></div>
+      <div id="hsr-distance-avg"></div>
+      <div id="sprint-distance-avg"></div>
+    </div>
+  </div>
+
+  <div id="hapoel-tel-aviv" class="main-tab-content">
+    <div class="sub-tabs">
+      <button class="sub-tab-button active" data-tab="hapoel-player-match-record">Player Match Record</button>
+      <button class="sub-tab-button" data-tab="hapoel-player-best-avg">Player Best Avg.</button>
+    </div>
+    <div id="hapoel-player-match-record" class="sub-tab-content active">
+      <div id="hapoel-total-distance"></div>
+      <div id="hapoel-hsr-distance"></div>
+      <div id="hapoel-sprint-distance"></div>
+    </div>
+    <div id="hapoel-player-best-avg" class="sub-tab-content">
+      <div id="hapoel-total-distance-avg"></div>
+      <div id="hapoel-hsr-distance-avg"></div>
+      <div id="hapoel-sprint-distance-avg"></div>
+    </div>
+  </div>
+</div>    
+        
         <div id="future-section" class="section top-right">
             <div class="section">
                 <div class="header-container">
                 <h2>Match Availability</h2>
                   <a href="full-availability.html" class="full-ranking">View Full Availability</a>
                     </div>
-                <div class="tabs">
-                    <button class="tab-button active" data-tab="use-content">% Use</button>
-                    <button class="tab-button" data-tab="availability-content">Availability</button>
-                    <button class="tab-button" data-tab="utilization-content">Utilization</button>
-                </div>
+<div class="tabs">
+    <button class="availability-tab-button active" data-tab="use-content">% Use</button>
+    <button class="availability-tab-button" data-tab="availability-content">Availability</button>
+    <button class="availability-tab-button" data-tab="utilization-content">Utilization</button>
+</div>
                 <div id="availability-wrapper">
                     <div id="use-content" class="tab-content active"></div>
                     <div id="availability-content" class="tab-content"></div>
@@ -60,8 +87,6 @@
   <div class="header-container">
     <h2>Training Missed</h2>
     <a href="full-availability.html#training-missed" class="full-ranking">View Full Training Data</a>
-  </div>
-  <div class="tabs">
   </div>
   <div id="training-wrapper">
     <div id="training-percent" class="tab-content active"></div>

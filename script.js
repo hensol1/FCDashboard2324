@@ -59,8 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listener for season change
     document.getElementById('season').addEventListener('change', updateStandings);
 
-
+    // Set up tabs last, after all data has been loaded
+    setupTabs();
 });
+
 
 function setupTabs(containerId) {
     const container = document.getElementById(containerId);
@@ -88,7 +90,7 @@ function setupTabs(containerId) {
         });
     });
 }
-
+/*Fixtures table*/
 function loadFixtures() {
     fetch('fixtures.json')
         .then(response => response.json())
@@ -158,6 +160,151 @@ async function displayFixtures(selectedMatchday) {
     html += '</table>';
     fixturesContent.innerHTML = html;
 }
+/* fitness data*/
+let currentMainTab = 'all-players';
+let currentSubTab = 'player-match-record';
+
+function displayTopPlayers() {
+    console.log('displayTopPlayers function called');
+    const categories = ['TotalDistance', 'HsrDistance', 'SprintDistance'];
+    const categoryNames = {
+        'TotalDistance': 'Total Distance',
+        'HsrDistance': 'HSR Distance',
+        'SprintDistance': 'Sprint Distance'
+    };
+
+    console.log('GPS Data:', gpsData);
+    const playerAverages = calculatePlayerAverages(gpsData);
+
+    console.log('Player Averages:', playerAverages);
+
+    displayCategoryData(categories, categoryNames, gpsData, playerAverages);
+}
+
+function displayCategoryData(categories, categoryNames, gpsData, playerAverages) {
+    console.log(`displayCategoryData called for ${currentMainTab} and ${currentSubTab}`);
+    
+    let filteredGpsData = gpsData;
+    let filteredPlayerAverages = playerAverages;
+    
+    if (currentMainTab === 'hapoel-tel-aviv') {
+        filteredGpsData = gpsData.filter(player => player.Team === 'Hapoel Tel Aviv');
+        filteredPlayerAverages = Object.fromEntries(
+            Object.entries(playerAverages).filter(([_, data]) => data.Team === 'Hapoel Tel Aviv')
+        );
+    }
+
+    const tabPrefix = currentMainTab === 'hapoel-tel-aviv' ? 'hapoel-' : '';
+
+    categories.forEach(category => {
+        let data;
+        if (currentSubTab === 'player-match-record' || currentSubTab === 'hapoel-player-match-record') {
+            data = filteredGpsData
+                .sort((a, b) => b[category] - a[category])
+                .slice(0, 5);
+        } else {
+            data = Object.entries(filteredPlayerAverages)
+                .sort((a, b) => b[1][category] - a[1][category])
+                .slice(0, 5);
+        }
+
+        console.log(`${category} - Data:`, data);
+
+        const content = createTable(data, category, categoryNames[category], 'Player', currentSubTab.includes('best-avg'));
+
+        const targetDiv = document.getElementById(`${tabPrefix}${category.toLowerCase().replace('distance', '-distance')}${currentSubTab.includes('best-avg') ? '-avg' : ''}`);
+        if (targetDiv) {
+            targetDiv.innerHTML = content;
+        } else {
+            console.error(`Target div not found for ${category}`);
+        }
+    });
+}
+
+function setupTabs() {
+    console.log('Setting up tabs');
+    setupMainTabs();
+    setupSubTabs('all-players');
+    setupSubTabs('hapoel-tel-aviv');
+    setupAvailabilityTabs();
+}
+
+function setupMainTabs() {
+    console.log('Setting up main tabs');
+    const mainTabs = document.querySelectorAll('.main-tab-button');
+    const mainContents = document.querySelectorAll('.main-tab-content');
+
+    mainTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-tab');
+            
+            mainTabs.forEach(t => t.classList.remove('active'));
+            mainContents.forEach(c => c.classList.remove('active'));
+            
+            tab.classList.add('active');
+            document.getElementById(target).classList.add('active');
+
+            currentMainTab = target;
+            currentSubTab = target === 'all-players' ? 'player-match-record' : 'hapoel-player-match-record';
+            displayTopPlayers();
+        });
+    });
+}
+
+function setupSubTabs(parentId) {
+    console.log(`Setting up sub tabs for ${parentId}`);
+    const parent = document.getElementById(parentId);
+    const subTabs = parent.querySelectorAll('.sub-tab-button');
+    const subContents = parent.querySelectorAll('.sub-tab-content');
+
+    subTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-tab');
+            
+            subTabs.forEach(t => t.classList.remove('active'));
+            subContents.forEach(c => c.classList.remove('active'));
+            
+            tab.classList.add('active');
+            parent.querySelector(`#${target}`).classList.add('active');
+
+            currentSubTab = target;
+            displayTopPlayers();
+        });
+    });
+}
+
+function setupAvailabilityTabs() {
+    console.log('Setting up availability tabs');
+    const tabs = document.querySelectorAll('#future-section .availability-tab-button');
+    const contents = document.querySelectorAll('#availability-wrapper .tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-tab');
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            
+            tab.classList.add('active');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateStandings();
+    loadGPSData();
+    loadFixtures();
+    loadAvailabilityData();
+    loadTrainingData();
+    setupTabs();
+
+    // Add event listener for season change
+    document.getElementById('season').addEventListener('change', updateStandings);
+});
 
 function loadGPSData() {
     Promise.all([
@@ -167,7 +314,7 @@ function loadGPSData() {
         .then(([gpsJson, playerJson]) => {
             gpsData = gpsJson;
             playerData = playerJson;
-            createPlayerNameMapping(); // Call this here
+            createPlayerNameMapping();
             console.log('GPS Data loaded:', gpsData);
             console.log('Player Data loaded:', playerData);
             displayTopPlayers();
@@ -207,60 +354,6 @@ function calculatePlayerAverages(data) {
     return playerAverages;
 }
 
-function displayTopPlayers() {
-    console.log('displayTopPlayers function called');
-    const categories = ['TotalDistance', 'HsrDistance', 'SprintDistance'];
-    const categoryNames = {
-        'TotalDistance': 'Total Distance',
-        'HsrDistance': 'HSR Distance',
-        'SprintDistance': 'Sprint Distance'
-    };
-
-    console.log('GPS Data:', gpsData);
-    const playerAverages = calculatePlayerAverages(gpsData);
-
-    console.log('Player Averages:', playerAverages);
-
-    for (const category of categories) {
-        console.log(`Processing category: ${category}`);
-        displayCategoryData(category, categoryNames[category], gpsData, playerAverages);
-    }
-}
-
-function displayCategoryData(category, categoryName, gpsData, playerAverages) {
-    console.log(`displayCategoryData called for ${category}`);
-    const playerMatchRecord = gpsData
-        .sort((a, b) => b[category] - a[category])
-        .slice(0, 5);
-
-    const playerBestAvg = Object.entries(playerAverages)
-        .sort((a, b) => b[1][category] - a[1][category])
-        .slice(0, 5);
-
-    console.log(`${category} - Player Match Record:`, playerMatchRecord);
-    console.log(`${category} - Player Best Avg (10+ matches):`, playerBestAvg);
-
-    const tabContents = {
-        'player-match-record': createTable(playerMatchRecord, category, categoryName, 'Player'),
-        'player-best-avg': createTable(playerBestAvg, category, categoryName, 'Player', true)
-    };
-
-    Object.entries(tabContents).forEach(([tabId, content]) => {
-        console.log(`Updating tab content for ${tabId}`);
-        const tab = document.getElementById(tabId);
-        if (!tab) {
-            console.error(`Tab element not found: ${tabId}`);
-            return;
-        }
-        const categoryDiv = tab.querySelector(`#${category.toLowerCase().replace('distance', '-distance')}`) || 
-                            document.createElement('div');
-        categoryDiv.id = `${category.toLowerCase().replace('distance', '-distance')}`;
-        categoryDiv.innerHTML = content;
-        if (!tab.contains(categoryDiv)) {
-            tab.appendChild(categoryDiv);
-        }
-    });
-}
 
 function createTable(data, category, categoryName, entityType, isAverage = false) {
     console.log(`createTable called for ${category}, ${entityType}, isAverage: ${isAverage}`);
@@ -419,63 +512,8 @@ function createAvailabilityPlayerRow(player, category) {
   </tr>`;
 }
 
-function createPlayerRow(player, category) {
-  const playerName = player.Name || 'Unknown Player';
-  const playerFullName = playerNameMapping[playerName] || playerName;
-  const value = player[category] || 'N/A';
-  
-  return `<tr>
-    <td class="player-cell">
-      <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
-           alt="${playerFullName}" 
-           class="player-image" 
-           onerror="this.onerror=null; this.src='player-images/default.webp';">
-      <span>${playerName}</span>
-    </td>
-    <td>${value}</td>
-  </tr>`;
-}
-
-// Update the document.addEventListener('DOMContentLoaded', ...) function
-document.addEventListener('DOMContentLoaded', function() {
-  updateStandings();
-  loadGPSData();
-  loadFixtures();
-  loadAvailabilityData(); // Add this line to load the Availability data
 
 
-
-
-  // Add event listener for season change
-  document.getElementById('season').addEventListener('change', updateStandings);
-    
-      // Set up tabs for player stats and availability sections
-  setupTabs('player-stats');
-  setupTabs('future-section');
-
-    
-    // Add event listeners for player stats tab buttons
-document.querySelectorAll('#player-stats .tab-button').forEach(button => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('#player-stats .tab-button').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('#player-stats .tab-content').forEach(content => content.classList.remove('active'));
-    button.classList.add('active');
-    document.getElementById(button.getAttribute('data-tab')).classList.add('active');
-  });
-});
-
-
-// Add event listeners for availability tab buttons
-document.querySelectorAll('#future-section .tab-button').forEach(button => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('#future-section .tab-button').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('#future-section .tab-content').forEach(content => content.classList.remove('active'));
-    button.classList.add('active');
-    document.getElementById(button.getAttribute('data-tab')).classList.add('active');
-  });
-});
-
-});
 
 async function updateStandings() {
     const season = document.getElementById('season').value;
