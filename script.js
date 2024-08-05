@@ -700,7 +700,7 @@ function displayNutritionData(data) {
         return;
     }
 
-    let html = `<h3>Weight Difference Concerns</h3>
+    let html = `<h3>Weight Diff Concerns</h3>
                 <table class="compact-table">
                     <tr>
                         <th>Player</th>
@@ -711,7 +711,7 @@ function displayNutritionData(data) {
         html += createNutritionPlayerRowSimple(player, 'Weight diff');
     });
 
-    html += `</table><h3>Fat Percentage Concerns</h3>
+    html += `</table><h3>Fat % Concerns</h3>
              <table class="compact-table">
                 <tr>
                     <th>Player</th>
