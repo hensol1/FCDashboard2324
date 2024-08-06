@@ -14,6 +14,20 @@ body {
     color: var(--text-color);
 }
 
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header img {
+  width: 100px;
+  height: 100px;
+}
+
+.header h1 {
+  margin: 0; /* Removes default margin from h1 */
+}
+
 .dashboard-grid {
     display: flex;
     justify-content: center;
