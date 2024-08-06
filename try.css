@@ -14,19 +14,63 @@ body {
     color: var(--text-color);
 }
 
-.header {
-  display: flex;
-  align-items: center;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
 }
 
-.header img {
-  width: 100px;
-  height: 100px;
+.logo-title {
+    display: flex;
+    align-items: center;
 }
 
-.header h1 {
-  margin: 0; /* Removes default margin from h1 */
+.logo-title img {
+    width: 100px;  /* Adjust as needed */
+    height: 100px;  /* Adjust as needed */
+    margin-right: 1rem;
 }
+
+.logo-title h1 {
+    margin: 0;
+    color: #fff;  /* Adjust color as needed */
+}
+
+/* Navigation Styles */
+nav {
+        position: absolute;  /* Add this */
+    left: 50%;  /* Add this */
+    transform: translateX(-50%);  /* Add this */
+
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+/* Navigation Styles end */
+
+
 
 .dashboard-grid {
     display: flex;
@@ -92,36 +136,6 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds a shadow for depth */
     font-weight: bold; /* Makes the text bold */
 }
-
-/* Navigation Styles */
-nav {
-    background-color: var(--secondary-color);
-    padding: 1rem;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 1rem;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: var(--primary-color);
-}
-/* Navigation Styles end */
 
 /*Tabs*/
 .tabs {
