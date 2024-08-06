@@ -1,5 +1,4 @@
 let gpsData = [];
-let fixturesData = {};
 let playerData = [];
 let playerNameMapping = {};
 
@@ -50,9 +49,7 @@ function cleanTeamName(teamName) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    updateStandings();
     loadGPSData();
-    loadFixtures();
     loadAvailabilityData();
     loadTrainingData();
     loadNutritionData();
@@ -120,48 +117,6 @@ function populateMatchdayDropdown(data) {
     });
 }
 
-async function displayFixtures(selectedMatchday) {
-    const fixturesContent = document.getElementById('fixtures-content');
-    const fixtures = fixturesData[selectedMatchday];
-    
-    if (!fixtures) {
-        fixturesContent.innerHTML = '<p>No fixtures available for this matchday.</p>';
-        return;
-    }
-
-    let html = `<h3>${selectedMatchday}</h3>`;
-    html += '<table><tr><th>Home Team</th><th>Score</th><th>Away Team</th></tr>';
-    
-    for (const fixture of fixtures) {
-        const homeTeamClean = cleanTeamName(fixture.home_team);
-        const awayTeamClean = cleanTeamName(fixture.away_team);
-        
-        const homeTeam = shortNameMapping[homeTeamClean] || homeTeamClean;
-        const awayTeam = shortNameMapping[awayTeamClean] || awayTeamClean;
-        
-        const homeLogoUrl = getTeamLogoUrl(homeTeam);
-        const awayLogoUrl = getTeamLogoUrl(awayTeam);
-        
-        html += `<tr>
-            <td class="team-cell">
-                <a href="${getTeamPageUrl(homeTeam)}">
-                    <img src="${homeLogoUrl}" alt="${homeTeam} logo" class="team-logo-small">
-                    <span class="team-name">${fixture.home_team}</span>
-                </a>
-            </td>
-            <td>${fixture.score}</td>
-            <td class="team-cell">
-                <a href="${getTeamPageUrl(awayTeam)}">
-                    <img src="${awayLogoUrl}" alt="${awayTeam} logo" class="team-logo-small">
-                    <span class="team-name">${fixture.away_team}</span>
-                </a>
-            </td>
-        </tr>`;
-    }
-    
-    html += '</table>';
-    fixturesContent.innerHTML = html;
-}
 /* fitness data*/
 let currentMainTab = 'all-players';
 let currentSubTab = 'player-match-record';
@@ -411,6 +366,7 @@ function createTable(data, category, categoryName, entityType, isAverage = false
                 html += `<span class="team-name">${team}</span>`;
                 html += '</td>';
             }
+            
 
             html += `<td>${value}${matchCount ? ` (${matchCount} matches)` : ''}</td>`;
 
@@ -432,6 +388,7 @@ function createTable(data, category, categoryName, entityType, isAverage = false
         console.error('Error in createTable:', error);
         return `<p>Error generating table: ${error.message}</p>`;
     }
+
 }
 
 /*availbility*/
@@ -469,7 +426,7 @@ function displayAvailabilityData(data) {
       return;
     }
 
-    let html = `<h3>${category}</h3><table class="compact-table">
+    let html = `<table class="compact-table">
       <tr>
         <th>Player</th>
         <th>${category}</th>

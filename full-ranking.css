@@ -138,6 +138,7 @@ tr:hover {
   align-items: center;
   justify-content: center; /* Add this line */
   text-align: center; /* Add this line */
+    transition: all 0.3s ease;
 }
 
 .player-image {
@@ -145,12 +146,29 @@ tr:hover {
   height: 30px;
   border-radius: 50%;
   flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
 .player-name {
   flex-grow: 1;
   text-align: center;
+    transition: all 0.3s ease;
 }
+
+tr:hover .player-cell .player-info {
+    transform: scale(1.05);
+}
+
+tr:hover .player-cell .player-image {
+    width: 70px;
+    height: 70px;
+}
+
+tr:hover .player-cell .player-name {
+    font-weight: bold;
+}
+
+
 
 
 .team-cell {
