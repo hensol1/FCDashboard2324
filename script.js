@@ -514,9 +514,6 @@ function createAvailabilityPlayerRow(player, category) {
   </tr>`;
 }
 
-
-
-
 async function updateStandings() {
     const season = document.getElementById('season').value;
     let filename;

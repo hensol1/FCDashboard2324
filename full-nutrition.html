@@ -4,81 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Nutrition Data</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-    th.sortable {
-        cursor: pointer;
-        position: relative;
-        padding-right: 20px; /* Make room for the arrows */
-    }
-    th.sortable:hover {
-        background-color: #2980b9;
-    }
-    th.sortable::after {
-        content: '\25B2'; /* Up arrow */
-        position: absolute;
-        right: 5px;
-        color: #bbb;
-    }
-    th.sortable::before {
-        content: '\25BC'; /* Down arrow */
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        color: #bbb;
-    }
-    th.sortable.asc::after {
-        color: #fff; /* White color when active */
-    }
-    th.sortable.desc::before {
-        color: #fff; /* White color when active */
-    }
-            .center-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    #full-nutrition-content {
-        max-width: 1000px; /* Adjust this value as needed */
-        width: 100%;
-    }
-
-    .compact-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .compact-table th,
-    .compact-table td {
-        padding: 8px 12px;
-        text-align: left;
-    }
-
-    .compact-table .player-cell {
-        width: 200px;
-    }
-
-    @media (max-width: 768px) {
-        #full-nutrition-content {
-            max-width: 100%;
-            padding: 0 15px;
-        }
-    }
-
-    </style>
+    <link rel="stylesheet" href="try.css">
 </head>
 <body>
+<header>
+    <div class="header-container">
+        <div class="logo-title">
+            <img src="logo.webp" alt="logo"/>
+            <h1>FCDashboard</h1>
+        </div>
+        <div class="season-info">
+            <span class="season-text">23/24 Season</span>
+            <img src="ipl.svg" alt="IPL logo" class="ipl-logo"/>
+        </div>
         <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="teams.html">Teams</a></li>
-            <li><a href="full-rankings.html">Fitness Data</a></li>
-        </ul>
-    </nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="full-rankings.html">Fitness Data</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
     
-        <h1 class="title">Nutrition Data</h1>
-
+<h1 class="title center">Nutrition Data</h1>
 
 <div class="center-container">
     <div id="full-nutrition-content" class="section"></div>

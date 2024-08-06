@@ -13,39 +13,52 @@ body {
     color: var(--text-color);
 }
 
-.title {
-    text-align: center;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+.season-info {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
-
-.section {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    
+.ipl-logo {
+    height: 85px; /* Adjust as needed */
+    margin-right: 17px;
 }
 
-
-
-.section h2 {
-    margin-top: 0;
-    color: var(--primary-color);
-    
+.season-text {
+    font-weight: bold;
+    color: white;
+    margin-right: 13px;
+    font-size: 25px
 }
-/* Navigation styles */
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo-title img {
+    width: 100px;  /* Adjust as needed */
+    height: 100px;  /* Adjust as needed */
+    margin-right: 1rem;
+}
+
+.logo-title h1 {
+    margin: 0;
+    color: #fff;  /* Adjust color as needed */
+}
+
+/* Navigation Styles */
 nav {
-    background-color: var(--secondary-color);
+        position: absolute;  /* Add this */
+    left: 50%;  /* Add this */
+    transform: translateX(-50%);  /* Add this */
+
     padding: 1rem;
 }
 
@@ -71,20 +84,38 @@ nav ul li a {
 nav ul li a:hover {
     color: var(--primary-color);
 }
+/* Navigation Styles end */
+
+
+.title {
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /* Table Styles */
 table {
-  width: auto;
-  max-width: 100%;
-  border-collapse: collapse;
-  text-align: left;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    max-width:250px;
 }
 
 th, td {
   padding: 4px 8px;
   vertical-align: middle;
   white-space: nowrap;
+
 }
+
 th {
     background-color: var(--primary-color);
     color: white;
@@ -101,50 +132,41 @@ tr:hover {
 }
 
 
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .left-column, .right-column {
-        width: 100%;
-    }
-}
-
 .player-cell {
   width: 200px; /* Adjust this width as needed */
-}
-
-.player-info {
   display: flex;
   align-items: center;
+  justify-content: center; /* Add this line */
+  text-align: center; /* Add this line */
 }
 
 .player-image {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin-right: 10px;
   flex-shrink: 0;
 }
 
 .player-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-grow: 1;
+  text-align: center;
+}
+
+
+.team-cell {
+  text-align: center; /* Add this line */
 }
 
 .team-cell a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line */
 }
 
 .team-cell a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .team-logo-small {
@@ -218,4 +240,6 @@ tr:hover {
 .sortable:hover {
     background-color: #2980b9;
 }
+
+
 

@@ -21,6 +21,24 @@ body {
     background-color: var(--secondary-color);
 }
 
+.season-info {
+    display: flex;
+    align-items: center;
+}
+
+.ipl-logo {
+    height: 85px; /* Adjust as needed */
+    margin-right: 17px;
+}
+
+.season-text {
+    font-weight: bold;
+    color: white;
+    margin-right: 13px;
+    font-size: 25px
+}
+
+
 .logo-title {
     display: flex;
     align-items: center;
@@ -70,8 +88,6 @@ nav ul li a:hover {
 }
 /* Navigation Styles end */
 
-
-
 .dashboard-grid {
     display: flex;
     justify-content: center;
@@ -91,7 +107,6 @@ nav ul li a:hover {
     overflow-x: auto;
 }
 
-
 .dashboard-section {
     background-color: #fff;
     border-radius: 8px;
@@ -103,8 +118,6 @@ nav ul li a:hover {
     align-items: center;
     margin-top: 10px;
     max-width: fit-content;
-    
-
 }
 
 .section-header {
@@ -254,6 +267,10 @@ nav ul li a:hover {
     color: white;
 }
 
+#availability-wrapper {
+    text-align: center;
+}
+
 /*Nutrition*/
 
 .green { background-color: #28a745; color: white; }
@@ -366,24 +383,6 @@ tr:hover {
 
 /*all tables ends */
 
-/* Highlight Styles */
-.highlight-green {
-    background-color: rgba(40, 167, 69, 0.2) !important;
-}
-
-.highlight-green td:first-child {
-    border-left: 4px solid #28a745;
-}
-
-.highlight-red {
-    background-color: rgba(220, 53, 69, 0.2) !important;
-}
-
-.highlight-red td:first-child {
-    border-left: 4px solid #dc3545;
-}
-/* Highlight Styles end */
-
 /* Player and Team Cell Styles */
 .player-cell {
     width: 200px;
@@ -433,3 +432,47 @@ tr:hover {
 }
 /* Player and Team Cell Styles end */
 
+/*Nutrition page*/
+.center {
+    text-align: center;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+    th.sortable {
+        cursor: pointer;
+        position: relative;
+        padding-right: 20px; /* Make room for the arrows */
+    }
+    th.sortable:hover {
+        background-color: #2980b9;
+    }
+    th.sortable::after {
+        content: '\25B2'; /* Up arrow */
+        position: absolute;
+        right: 5px;
+        color: #bbb;
+    }
+    th.sortable::before {
+        content: '\25BC'; /* Down arrow */
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        color: #bbb;
+    }
+    th.sortable.asc::after {
+        color: #fff; /* White color when active */
+    }
+    th.sortable.desc::before {
+        color: #fff; /* White color when active */
+    }
+            .center-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+/*Nutrition page*/

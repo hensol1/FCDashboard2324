@@ -16,16 +16,80 @@ body {
   color: var(--text-color);
 }
 
-.title {
-  text-align: center;
-  margin-left: var(--left-padding);
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.season-info {
+    display: flex;
+    align-items: center;
 }
+
+.ipl-logo {
+    height: 85px; /* Adjust as needed */
+    margin-right: 17px;
+}
+
+.season-text {
+    font-weight: bold;
+    color: white;
+    margin-right: 13px;
+    font-size: 25px
+}
+
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo-title img {
+    width: 100px;  /* Adjust as needed */
+    height: 100px;  /* Adjust as needed */
+    margin-right: 1rem;
+}
+
+.logo-title h1 {
+    margin: 0;
+    color: #fff;  /* Adjust color as needed */
+}
+
+/* Navigation Styles */
+nav {
+        position: absolute;  /* Add this */
+    left: 50%;  /* Add this */
+    transform: translateX(-50%);  /* Add this */
+
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+/* Navigation Styles end */
+
 
 .column {
   width: 100%;
@@ -37,35 +101,6 @@ body {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-}
-
-nav {
-  background-color: var(--secondary-color);
-  padding: 1rem;
-  text-align: right;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-}
-
-nav ul li {
-  margin: 0 1rem;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: var(--primary-color);
 }
 
 .column h2 {
