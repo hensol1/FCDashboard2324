@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Roster</title>
-    <link rel="stylesheet" href="teams_team-roster.css">
+    <title>Player Profile</title>
+    <link rel="stylesheet" href="player-page.css">
 </head>
 <body>
-<header>
+    <header>
     <div class="header-container">
         <div class="logo-title">
             <img src="logo.webp" alt="logo"/>
@@ -27,22 +27,27 @@
         </nav>
     </div>
 </header>
-    <div class="team-header">
-        <div class="team-logo-container">
-            <img id="team-logo" src="team-logos/" alt="Team Logo" class="team-logo">
-        </div>
-        <h1 id="team-name"></h1>
+
+    <div class="player-header">
+        <img id="player-image" src="" alt="Player Image">
+        <h1 id="player-name"></h1>
+        <p id="player-info"></p>
+    </div>
+    <div class="team-info">
+        <img id="team-logo" src="" alt="Team Logo">
+        <h2 id="team-name"></h2>
+    </div>
+    <div class="player-stats">
+        <p id="total-minutes"></p>
+        <p id="minutes-ranking"></p>
     </div>
     <div class="tabs">
-        <button class="tab-button active" data-tab="roster">Roster</button>
-        <button class="tab-button" data-tab="team-stats">Team Stats</button>
-        <button class="tab-button" data-tab="player-stats">Player Stats</button>
+        <button class="tab-button active" data-tab="football-data">Football Data</button>
+        <button class="tab-button" data-tab="fitness-data">Fitness Data</button>
     </div>
-    <div id="tab-content">
-        <div id="roster-container" class="tab-pane active"></div>
-        <div id="team-stats-container" class="tab-pane">Team Stats Content</div>
-        <div id="player-stats-container" class="tab-pane">Player Stats Content</div>
-    </div>
-    <script src="team-roster.js"></script>
+    <div id="football-data" class="tab-content active"></div>
+    <div id="fitness-data" class="tab-content"></div>
+
+    <script src="player-page.js"></script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Data Rankings - FCDashboard</title>
+    <link rel="stylesheet" href="full-ranking.css">
+</head>
+<body>
+    <div class="header-container">
+        <div class="logo-title">
+            <img src="logo.webp" alt="FCDashboard Logo">
+            <h1>FCDashboard</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="full-rankings.html">Fitness Data</a></li>
+                <li><a href="football-rankings.html">Football Data</a></li>
+            </ul>
+        </nav>
+
+        <div class="season-info">
+            <span class="season-text">23/24 Season</span>
+            <img src="ipl.svg" alt="IPL Logo" class="ipl-logo">
+        </div>
+    </div>
+
+    <h1 id="football-data" class="title">Football Data Rankings</h1>
+
+    <div class="filters">
+        <input type="text" id="player-search" placeholder="Search player...">
+        <select id="club-filter">
+            <option value="">All Clubs</option>
+        </select>
+        <select id="position-filter">
+            <option value="">All Positions</option>
+            <option value="Defenders">Defenders</option>
+            <option value="Midfielders">Midfielders</option>
+            <option value="Attackers">Attackers</option>
+        </select>
+        <select id="age-filter">
+            <option value="">All Ages</option>
+            <option value="U20">U20</option>
+            <option value="U23">U23</option>
+            <option value="U30">U30</option>
+        </select>
+        <button id="clear-filters">Clear Filters</button>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-button active" data-tab="touches">Touches</button>
+        <button class="tab-button" data-tab="passing">Passing</button>
+        <button class="tab-button" data-tab="shooting">Shooting</button>
+        <button class="tab-button" data-tab="defense">Defense</button>
+    </div>
+
+    <div class="container">
+        <div id="football-rankings-content">
+            <div id="touches" class="tab-content active"></div>
+            <div id="passing" class="tab-content"></div>
+            <div id="shooting" class="tab-content"></div>
+            <div id="defense" class="tab-content"></div>
+        </div>
+    </div>
+
+    <script src="football-rankings.js"></script>
+</body>
+</html>

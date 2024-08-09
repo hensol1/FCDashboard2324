@@ -189,9 +189,7 @@ function createPlayerCard(player, team, container) {
             <p>${player.Position || 'N/A'}</p>
             <p>Age: ${player.Age || 'N/A'}</p>
             <p>Games: ${player.GM || 'N/A'} | Goals: ${player.Goal || '0'}</p>
-            ${playerPhysicalData ? `
-               
-            ` : ''}
+            <a href="player-page.html?id=${player.playerId}" class="player-link">View Profile</a>
         </div>
     `;
     container.appendChild(playerElement);
