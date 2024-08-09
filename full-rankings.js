@@ -100,25 +100,30 @@ function displayFullRankings(filteredPlayers = null) {
         let html = '<table class="compact-table">';
         html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th><th>Average</th><th>Matches</th></tr>';
 
-    sortedPlayers.forEach((player, index) => {
-        const [playerFullName, stats] = player;
-        const shortName = playerNameMapping[playerFullName] || playerFullName;
-        html += `<tr>
-            <td>${index + 1}</td>
-            <td class="player-cell">
-                <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" alt="${playerFullName}" class="player-image" onerror="this.onerror=null; this.src='player-images/default.webp';">
-                <span class="player-name">${shortName}</span>
-            </td>
-            <td class="team-cell">
-                <img src="${getTeamLogoUrl(stats.Team)}" alt="${stats.Team} logo" class="team-logo-small">
-                <a href="${getTeamPageUrl(stats.Team)}" class="team-name">${stats.Team}</a>
-            </td>
-            <td>${stats.Position}</td>
-            <td>${stats.Age}</td>
-            <td>${stats[category].toFixed(2)}</td>
-            <td>${stats.MatchCount}</td>
-        </tr>`;
-    });
+        sortedPlayers.forEach((player, index) => {
+            const [playerFullName, stats] = player;
+            const shortName = playerNameMapping[playerFullName] || playerFullName;
+            const playerInfo = playerData.find(p => p.playerFullName === playerFullName);
+            const playerId = playerInfo ? playerInfo.playerId : '';
+
+            html += `<tr>
+                <td>${index + 1}</td>
+                <td class="player-cell">
+                    <a href="player-page.html?id=${playerId}" class="player-link">
+                        <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" alt="${playerFullName}" class="player-image" onerror="this.onerror=null; this.src='player-images/default.webp';">
+                        <span class="player-name">${shortName}</span>
+                    </a>
+                </td>
+                <td class="team-cell">
+                    <img src="${getTeamLogoUrl(stats.Team)}" alt="${stats.Team} logo" class="team-logo-small">
+                    <a href="${getTeamPageUrl(stats.Team)}" class="team-name">${stats.Team}</a>
+                </td>
+                <td>${stats.Position}</td>
+                <td>${stats.Age}</td>
+                <td>${stats[category].toFixed(2)}</td>
+                <td>${stats.MatchCount}</td>
+            </tr>`;
+        });
 
         html += '</table>';
 

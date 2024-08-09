@@ -38,7 +38,7 @@ function displayFootballRankings() {
 
     Object.entries(statCategories).forEach(([category, stats]) => {
         let html = '<table class="compact-table">';
-        html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th>';
+        html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th><th>Matches</th>'; // Added Matches
         stats.forEach(stat => {
             html += `<th class="sortable" data-stat="${stat}">${stat} ${getSortIndicator(stat)}</th>`;
         });
@@ -55,15 +55,18 @@ function displayFootballRankings() {
             html += `<tr>
                 <td>${index + 1}</td>
                 <td class="player-cell">
-                    <img src="player-images/${player.playerFullName.replace(/ /g, '_')}.webp" alt="${player.playerFullName}" class="player-image" onerror="this.onerror=null; this.src='player-images/default.webp';">
-                    <span class="player-name">${player.Player}</span>
+                    <a href="player-page.html?id=${player.playerId}" class="player-link">
+                        <img src="player-images/${player.playerFullName.replace(/ /g, '_')}.webp" alt="${player.playerFullName}" class="player-image" onerror="this.onerror=null; this.src='player-images/default.webp';">
+                        <span class="player-name">${player.Player}</span>
+                    </a>
                 </td>
                 <td class="team-cell">
                     <img src="${getTeamLogoUrl(player.teamName)}" alt="${player.teamName} logo" class="team-logo-small">
                     <a href="${getTeamPageUrl(player.teamName)}" class="team-name">${player.teamName}</a>
                 </td>
                 <td>${player.Position}</td>
-                <td>${player.Age}</td>`;
+                <td>${player.Age}</td>
+                <td>${player.GM}</td>`; // Added Matches (GM)
             stats.forEach(stat => {
                 html += `<td>${player[stat]}</td>`;
             });

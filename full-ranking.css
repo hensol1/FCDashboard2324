@@ -259,5 +259,17 @@ tr:hover .player-cell .player-name {
     background-color: #2980b9;
 }
 
+.player-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%; /* Make the link take full width of the cell */
+}
+.player-link:hover {
+    text-decoration: underline;
+}
+
+
 
 
