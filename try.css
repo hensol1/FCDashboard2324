@@ -135,21 +135,37 @@ nav ul li a:hover {
 
 /* view full list button*/
 .view-full {
-    background-color: #af4c4f; /* Green background */
-    color: white; /* White text */
+    background-color: #af4c4f;
+    color: white !important; /* Force white text */
     padding: 6px;
-    text-align: center; /* Centered text */
-    text-decoration: none; /* No underline */
+    text-align: center;
+    text-decoration: none;
     font-size: 12px;
     margin: 4px 2px;
-    cursor: pointer; /* Pointer cursor on hover */
-    border: none; /* No border */
-    border-radius: 4px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds a shadow for depth */
-    font-weight: bold; /* Makes the text bold */
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-weight: bold;
+    display: inline-block; /* Ensure consistent display */
 }
 
+.view-full:hover {
+    background-color: #8e3e41; /* Darker shade for hover effect */
+    color: white !important;
+    text-decoration: none;
+}
+
+/* Override any conflicting styles */
+#player-stats .view-full {
+    color: white !important;
+    text-decoration: none;
+}
+
+#player-stats .view-full:hover {
+    text-decoration: none;
+}
 /*Tabs*/
 .tabs {
     text-align: center;
@@ -475,3 +491,30 @@ h3 {
 
 /*player-page*/
 
+.player-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.player-link:visited {
+    color: inherit;
+}
+
+.player-link:hover {
+    text-decoration: underline;
+}
+
+/* Add these rules to your existing CSS file */
+
+#player-stats a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#player-stats a:visited {
+    color: inherit;
+}
+
+#player-stats a:hover {
+    text-decoration: underline;
+}

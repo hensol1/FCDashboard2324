@@ -272,12 +272,14 @@ function loadGPSData() {
             gpsData = gpsJson;
             playerData = playerJson;
             createPlayerNameMapping();
+            playerDataMap = createPlayerDataMap(playerData); // Add this line
             console.log('GPS Data loaded:', gpsData);
             console.log('Player Data loaded:', playerData);
             displayTopPlayers();
         })
         .catch(error => console.error('Error loading data:', error));
 }
+
 
 function calculatePlayerAverages(data) {
     const playerAverages = {};
@@ -311,6 +313,14 @@ function calculatePlayerAverages(data) {
     return playerAverages;
 }
 
+function createPlayerDataMap(playerData) {
+    const playerDataMap = {};
+    playerData.forEach(player => {
+        playerDataMap[player.Player] = player;
+        playerDataMap[player.playerFullName] = player;
+    });
+    return playerDataMap;
+}
 
 function createTable(data, category, categoryName, entityType, isAverage = false) {
     console.log(`createTable called for ${category}, ${entityType}, isAverage: ${isAverage}`);
@@ -341,13 +351,18 @@ function createTable(data, category, categoryName, entityType, isAverage = false
             html += `<td class="${entityType.toLowerCase()}-cell">`;
             html += `<div class="${entityType.toLowerCase()}-info">`;
             
-            if (entityType === 'Player') {
-                const playerFullName = playerNameMapping[entity] || entity;
-                    html += `<img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" ` +
-            `alt="${playerFullName}" ` +
-            `class="player-image" ` +
-            `onerror="this.onerror=null; this.src='player-images/default.webp';">`;
+if (entityType === 'Player') {
+    const playerFullName = playerNameMapping[entity] || entity;
+    const playerData = playerDataMap[entity];
+    const playerId = playerData ? playerData.playerId : '';
+    html += `<a href="player-page.html?id=${playerId}">`;
+    html += `<img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" ` +
+        `alt="${playerFullName}" ` +
+        `class="player-image" ` +
+        `onerror="this.onerror=null; this.src='player-images/default.webp';">`;
     html += `<span class="${entityType.toLowerCase()}-name">${entity}</span>`;
+    html += `</a>`;
+
 
             } else {
                 const teamPageUrl = getTeamPageUrl(entity);
@@ -456,15 +471,19 @@ function createAvailabilityPlayerRow(player, category) {
   const playerName = player.Name || 'Unknown Player';
   const playerFullName = playerNameMapping[playerName] || playerName;
   const value = player[category] || '0%';
+  const playerData = playerDataMap[playerName];
+  const playerId = playerData ? playerData.playerId : '';
   
   return `<tr>
     <td class="player-cell">
       <div class="player-info">
-        <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
-             alt="${playerFullName}" 
-             class="player-image" 
-             onerror="this.onerror=null; this.src='player-images/default.webp';">
-        <span class="player-name">${playerName}</span>
+        <a href="player-page.html?id=${playerId}" class="player-link">
+          <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+               alt="${playerFullName}" 
+               class="player-image" 
+               onerror="this.onerror=null; this.src='player-images/default.webp';">
+          <span class="player-name">${playerName}</span>
+        </a>
       </div>
     </td>
     <td>${value}</td>
@@ -616,15 +635,19 @@ function createTrainingPlayerRow(player) {
   const playerFullName = playerNameMapping[playerName] || playerName;
   const percentMiss = player['% Miss'] || '0%';
   const total = player.Total || '0';
+  const playerData = playerDataMap[playerName];
+  const playerId = playerData ? playerData.playerId : '';
 
   return `<tr>
     <td class="player-cell">
       <div class="player-info">
-        <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
-             alt="${playerFullName}" 
-             class="player-image" 
-             onerror="this.onerror=null; this.src='player-images/default.webp';">
-        <span class="player-name">${playerName}</span>
+        <a href="player-page.html?id=${playerId}" class="player-link">
+          <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+               alt="${playerFullName}" 
+               class="player-image" 
+               onerror="this.onerror=null; this.src='player-images/default.webp';">
+          <span class="player-name">${playerName}</span>
+        </a>
       </div>
     </td>
     <td>${percentMiss}</td>
@@ -684,6 +707,8 @@ function createNutritionPlayerRowSimple(player, dataColumn) {
     const playerName = player.Name || 'Unknown Player';
     const playerFullName = playerNameMapping[playerName] || playerName;
     const value = player[dataColumn];
+    const playerData = playerDataMap[playerName];
+    const playerId = playerData ? playerData.playerId : '';
     
     let cellClass = '';
     if (dataColumn === 'Weight diff') {
@@ -703,11 +728,13 @@ function createNutritionPlayerRowSimple(player, dataColumn) {
     return `<tr>
         <td class="player-cell">
             <div class="player-info">
-                <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
-                     alt="${playerFullName}" 
-                     class="player-image" 
-                     onerror="this.onerror=null; this.src='player-images/default.webp';">
-                <span class="player-name">${playerName}</span>
+                <a href="player-page.html?id=${playerId}" class="player-link">
+                    <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+                         alt="${playerFullName}" 
+                         class="player-image" 
+                         onerror="this.onerror=null; this.src='player-images/default.webp';">
+                    <span class="player-name">${playerName}</span>
+                </a>
             </div>
         </td>
         <td class="${cellClass}">${value}</td>
@@ -789,15 +816,19 @@ function displayLoanPlayersData(data) {
 function createLoanPlayerRow(player) {
     const playerName = player.Player || 'Unknown Player';
     const playerFullName = playerNameMapping[playerName] || playerName;
+    const playerData = playerDataMap[playerName];
+    const playerId = playerData ? playerData.playerId : '';
 
     return `<tr>
         <td class="player-cell">
             <div class="player-info">
-                <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
-                     alt="${playerFullName}" 
-                     class="player-image" 
-                     onerror="this.onerror=null; this.src='player-images/default.webp';">
-                <span class="player-name">${playerName}</span>
+                <a href="player-page.html?id=${playerId}" class="player-link">
+                    <img src="player-images/${playerFullName.replace(/ /g, '_')}.webp" 
+                         alt="${playerFullName}" 
+                         class="player-image" 
+                         onerror="this.onerror=null; this.src='player-images/default.webp';">
+                    <span class="player-name">${playerName}</span>
+                </a>
             </div>
         </td>
         <td>${player.Team}</td>
