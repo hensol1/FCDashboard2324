@@ -39,8 +39,7 @@
     margin: 5px 10px;
 }
 
-
-/* Tab Styles (overriding if necessary) */
+/* Tab Styles */
 .tabs {
     display: flex;
     justify-content: center;
@@ -72,29 +71,45 @@
     display: block;
 }
 
-/* Table Styles (overriding if necessary) */
-.tab-content table {
+/* Center h3 headers */
+.tab-content h3 {
+    text-align: center;
+}
+
+/* Table Styles for both Football and Fitness data */
+.football-stats-table,
+.fitness-stats-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px; /* Adjust this value as needed */
 }
 
-.tab-content th, .tab-content td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+.football-stats-table th,
+.football-stats-table td,
+.fitness-stats-table th,
+.fitness-stats-table td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
-.tab-content th {
+.football-stats-table th,
+.fitness-stats-table th {
     background-color: var(--primary-color);
     color: white;
 }
 
-.tab-content tr:nth-child(even) {
+.football-stats-table tr:nth-child(even),
+.fitness-stats-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.tab-content tr:hover {
+.football-stats-table tr:hover,
+.fitness-stats-table tr:hover {
     background-color: #ddd;
 }
 
@@ -131,45 +146,23 @@
     margin-top: 20px;
 }
 
-/*football stats*/
-.football-stats-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
-.football-stats-table + h3 {
-    margin-top: 40px;
-}
-
-.football-stats-table th, .football-stats-table td {
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-.football-stats-table th {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.football-stats-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
 /* For mobile screens */
 @media screen and (max-width: 600px) {
-    .football-stats-table {
+    .football-stats-table,
+    .fitness-stats-table {
         font-size: 12px;
     }
     
-    .football-stats-table th, .football-stats-table td {
+    .football-stats-table th,
+    .football-stats-table td,
+    .fitness-stats-table th,
+    .fitness-stats-table td {
         padding: 5px;
     }
 }
 
-.football-stats-table tr:last-child {
+.football-stats-table tr:last-child,
+.fitness-stats-table tr:last-child {
     font-style: italic;
     color: #666;
 }

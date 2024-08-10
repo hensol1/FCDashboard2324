@@ -28,11 +28,8 @@ function loadPlayerData(playerId) {
             return;
         }
         
-        // Match GPS data using both full name and short name
-        gpsData = gps.filter(g => 
-            g.Player === playerData.playerFullName || 
-            g.Player === playerData.Player
-        );
+        // Use all GPS data, not just for the current player
+        gpsData = gps;
         
         console.log("Player Data:", playerData);
         console.log("GPS Data:", gpsData);
@@ -48,6 +45,7 @@ function loadPlayerData(playerId) {
         displayFitnessData();
     }).catch(error => console.error('Error loading data:', error));
 }
+
 
 function getPlayerCategory(position) {
     const categories = {
@@ -154,28 +152,73 @@ function displayFitnessData() {
         return;
     }
     
-    const playerAverages = calculatePlayerAverages(playerData.playerFullName, gpsData);
+    const allPlayerAverages = calculateAllPlayerAverages(gpsData);
+    const playerAverages = allPlayerAverages[playerData.Player] || allPlayerAverages[playerData.playerFullName];
     
     if (!playerAverages) {
         fitnessDataContainer.innerHTML = '<p>Insufficient fitness data for this player (less than 10 matches or 500 minutes played).</p>';
         return;
     }
     
-    // Calculate league averages and rankings
-    const allPlayerAverages = calculateAllPlayerAverages(gpsData);
-    const leagueAverages = calculateLeagueAverages(allPlayerAverages);
-    const playerRankings = calculatePlayerRankings(allPlayerAverages, playerData.playerFullName);
+    const playerRankings = calculatePlayerRankings(allPlayerAverages, playerData.Player);
     
+    // Find the match with the highest total distance
+    const bestMatch = gpsData
+        .filter(match => match.Player === playerData.Player || match.Player === playerData.playerFullName)
+        .reduce((best, current) => current.TotalDistance > best.TotalDistance ? current : best);
+
     let html = `
         <h3>Match Record</h3>
-        <p>Total Distance: ${Math.max(...gpsData.map(g => g.TotalDistance)).toFixed(2)} km</p>
-        <p>HSR Distance: ${Math.max(...gpsData.map(g => g.HsrDistance)).toFixed(2)} km</p>
-        <p>Sprint Distance: ${Math.max(...gpsData.map(g => g.SprintDistance)).toFixed(2)} km</p>
+        <table class="fitness-stats-table">
+            <tr>
+                <th>Category</th>
+                <th>Value</th>
+                <th>Matchday</th>
+                <th>Opponent</th>
+            </tr>
+            <tr>
+                <td>Total Distance</td>
+                <td>${bestMatch.TotalDistance.toFixed(2)} km</td>
+                <td>${bestMatch.Matchday}</td>
+                <td>${bestMatch.Opponent}</td>
+            </tr>
+            <tr>
+                <td>HSR Distance</td>
+                <td>${bestMatch.HsrDistance.toFixed(2)} km</td>
+                <td>${bestMatch.Matchday}</td>
+                <td>${bestMatch.Opponent}</td>
+            </tr>
+            <tr>
+                <td>Sprint Distance</td>
+                <td>${bestMatch.SprintDistance.toFixed(2)} km</td>
+                <td>${bestMatch.Matchday}</td>
+                <td>${bestMatch.Opponent}</td>
+            </tr>
+        </table>
         
         <h3>Player Average</h3>
-        <p>Total Distance: ${playerAverages.TotalDistance.toFixed(2)} km (Rank: ${playerRankings.TotalDistance})</p>
-        <p>HSR Distance: ${playerAverages.HsrDistance.toFixed(2)} km (Rank: ${playerRankings.HsrDistance})</p>
-        <p>Sprint Distance: ${playerAverages.SprintDistance.toFixed(2)} km (Rank: ${playerRankings.SprintDistance})</p>
+        <table class="fitness-stats-table">
+            <tr>
+                <th>Category</th>
+                <th>Value</th>
+                <th>Rank</th>
+            </tr>
+            <tr>
+                <td>Total Distance</td>
+                <td>${playerAverages.TotalDistance.toFixed(2)} m</td>
+                <td>${playerRankings.TotalDistance}</td>
+            </tr>
+            <tr>
+                <td>HSR Distance</td>
+                <td>${playerAverages.HsrDistance.toFixed(2)} m</td>
+                <td>${playerRankings.HsrDistance}</td>
+            </tr>
+            <tr>
+                <td>Sprint Distance</td>
+                <td>${playerAverages.SprintDistance.toFixed(2)} m</td>
+                <td>${playerRankings.SprintDistance}</td>
+            </tr>
+        </table>
     `;
     
     fitnessDataContainer.innerHTML = html;
@@ -215,34 +258,38 @@ function calculatePlayerAverages(playerName, data) {
 
 function calculateAllPlayerAverages(data) {
     const playerAverages = {};
+    
+    // Group data by player
     data.forEach(entry => {
         if (!playerAverages[entry.Player]) {
             playerAverages[entry.Player] = {
                 TotalDistance: 0,
                 HsrDistance: 0,
                 SprintDistance: 0,
-                MatchCount: 0,
-                TotalMinutes: 0
+                TotalMinutes: 0,
+                MatchCount: 0
             };
         }
         playerAverages[entry.Player].TotalDistance += entry.TotalDistance;
         playerAverages[entry.Player].HsrDistance += entry.HsrDistance;
         playerAverages[entry.Player].SprintDistance += entry.SprintDistance;
-        playerAverages[entry.Player].MatchCount++;
         playerAverages[entry.Player].TotalMinutes += entry.Minutes;
+        playerAverages[entry.Player].MatchCount++;
     });
 
+    // Calculate averages for each player
     Object.keys(playerAverages).forEach(player => {
         const avg = playerAverages[player];
         if (avg.MatchCount >= 10 && avg.TotalMinutes >= 500) {
-            avg.TotalDistance /= avg.MatchCount;
-            avg.HsrDistance /= avg.MatchCount;
-            avg.SprintDistance /= avg.MatchCount;
+            avg.TotalDistance = avg.TotalDistance / avg.MatchCount;
+            avg.HsrDistance = avg.HsrDistance / avg.MatchCount;
+            avg.SprintDistance = avg.SprintDistance / avg.MatchCount;
         } else {
             delete playerAverages[player];
         }
     });
 
+    console.log("All Player Averages:", playerAverages);
     return playerAverages;
 }
 
@@ -277,9 +324,11 @@ function calculatePlayerRankings(allPlayerAverages, playerName) {
             .sort((a, b) => b[1][category] - a[1][category]);
         
         const playerRank = sortedPlayers.findIndex(([name]) => name === playerName) + 1;
-        rankings[category] = playerRank;
+
+        rankings[category] = playerRank > 0 ? playerRank : 'N/A';
     });
 
+    console.log("Calculated Rankings:", rankings);
     return rankings;
 }
 
