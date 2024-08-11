@@ -1,6 +1,7 @@
 let gpsData = [];
 let playerData = [];
 let playerNameMapping = {};
+let playerDataMap = {};
 
 function createPlayerNameMapping() {
     playerNameMapping = {}; // Reset the mapping
@@ -54,9 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadTrainingData();
     loadNutritionData();
     loadLoanPlayersData();
-
-    // Add event listener for season change
-    document.getElementById('season').addEventListener('change', updateStandings);
 
     // Set up tabs last, after all data has been loaded
     setupTabs();
@@ -252,15 +250,12 @@ function setupAvailabilityTabs() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    updateStandings();
     loadGPSData();
     loadFixtures();
     loadAvailabilityData();
     loadTrainingData();
     setupTabs();
 
-    // Add event listener for season change
-    document.getElementById('season').addEventListener('change', updateStandings);
 });
 
 function loadGPSData() {
