@@ -3,6 +3,28 @@ let playerData = [];
 let playerNameMapping = {};
 let playerDataMap = {};
 
+document.addEventListener('DOMContentLoaded', function() {
+    loadGPSData();
+    loadFixtures();
+    loadAvailabilityData();
+    loadTrainingData();
+    setupTabs();
+    loadLoanPlayersData();
+    loadNutritionData();
+
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadGPSData();
+    loadAvailabilityData();
+    loadTrainingData();
+    loadNutritionData();
+    loadLoanPlayersData();
+
+    // Set up tabs last, after all data has been loaded
+    setupTabs();
+});
+
 function createPlayerNameMapping() {
     playerNameMapping = {}; // Reset the mapping
     playerData.forEach(player => {
@@ -48,18 +70,6 @@ function cleanTeamName(teamName) {
     // Remove standings and extra spaces
     return teamName.replace(/^\(\d+\.\)\s*/, '').replace(/\s*\(\d+\.\)$/, '').trim();
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadGPSData();
-    loadAvailabilityData();
-    loadTrainingData();
-    loadNutritionData();
-    loadLoanPlayersData();
-
-    // Set up tabs last, after all data has been loaded
-    setupTabs();
-});
-
 
 function setupTabs(containerId) {
     const container = document.getElementById(containerId);
@@ -245,18 +255,6 @@ function setupAvailabilityTabs() {
         });
     });
 }
-
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadGPSData();
-    loadFixtures();
-    loadAvailabilityData();
-    loadTrainingData();
-    setupTabs();
-
-});
 
 function loadGPSData() {
     Promise.all([
