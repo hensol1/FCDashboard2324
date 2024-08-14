@@ -36,6 +36,12 @@ function displayFootballRankings() {
     const filteredPlayers = getFilteredPlayers();
 
     Object.entries(statCategories).forEach(([category, stats]) => {
+        const categoryElement = document.getElementById(category);
+        if (!categoryElement) {
+            console.error(`Element with id "${category}" not found`);
+            return;
+        }
+
         let html = '<table class="compact-table">';
         html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th><th>Matches</th>';
         stats.forEach(stat => {
@@ -73,7 +79,7 @@ function displayFootballRankings() {
         });
 
         html += '</table>';
-        document.getElementById(category).innerHTML = html;
+        categoryElement.innerHTML = html;
     });
 
     setupSorting();
@@ -102,6 +108,39 @@ function setupSorting() {
     });
 }
 
+function setupTabs() {
+    const tabs = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // Set the first tab (Passing) as active by default
+    if (tabs.length > 0) {
+        tabs[0].classList.add('active');
+        const firstTabContent = document.getElementById('passing');
+        if (firstTabContent) {
+            firstTabContent.classList.add('active');
+        } else {
+            console.error('First tab content (passing) not found');
+        }
+    }
+}
+
+// Ensure the DOM is fully loaded before running the script
+document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+});
+
 function getFilteredPlayers() {
     return playerData.filter(player => {
         const matchesSearch = player.playerFullName.toLowerCase().includes(currentFilters.search.toLowerCase());
@@ -121,27 +160,6 @@ function getTeamLogoUrl(team) {
 
 function getTeamPageUrl(teamName) {
     return `team-roster.html?team=${encodeURIComponent(teamName)}`;
-}
-
-function setupTabs() {
-    const tabs = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const tabId = tab.getAttribute('data-tab');
-            
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            tab.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-
-    // Set the first tab (Passing) as active by default
-    tabs[0].classList.add('active');
-    document.getElementById('passing').classList.add('active');
 }
 
 function populateClubFilter() {
