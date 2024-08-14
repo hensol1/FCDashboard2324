@@ -14,8 +14,7 @@ const positionCategories = {
 };
 
 const statCategories = {
-    'touches': ['Touches'],
-    'passing': ['PsAtt', 'Pass%', 'Ps%InA3rd', 'Chance', 'Ast', 'xA'],
+    'passing': ['Touches', 'PsAtt', 'Pass%', 'Ps%InA3rd', 'Chance', 'Ast', 'xA'],
     'shooting': ['Goal', 'ExpG', 'ShotExcBlk', 'Shot', 'SOG', 'OnTarget%'],
     'defense': ['Tackle%', 'Duel%', 'Aerial%', 'Recovery']
 };
@@ -139,6 +138,10 @@ function setupTabs() {
             document.getElementById(tabId).classList.add('active');
         });
     });
+        // Set the first tab (Passing) as active by default
+    tabs[0].classList.add('active');
+    document.getElementById('passing').classList.add('active');
+
 }
 
 function populateClubFilter() {

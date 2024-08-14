@@ -293,6 +293,12 @@ tr:hover .player-cell .player-name {
     padding: 5px 10px;
 }
 
+.team-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .team-info {
     display: flex;
     align-items: center;
@@ -302,10 +308,15 @@ tr:hover .player-cell .player-name {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+    flex-shrink: 0;
 }
 
 .team-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.team-link:hover .team-name {
+    text-decoration: underline;
 }

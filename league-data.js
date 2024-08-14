@@ -58,10 +58,12 @@ function createTableBody(data, sortKey) {
         html += `<tr>
             <td>${index + 1}</td>
             <td class="team-cell">
-                <div class="team-info">
-                    <img src="${getTeamLogoUrl(team.Team)}" alt="${team.Team} logo" class="team-logo-small">
-                    <span class="team-name">${team.Team}</span>
-                </div>
+                <a href="${getTeamPageUrl(team.Team)}" class="team-link">
+                    <div class="team-info">
+                        <img src="${getTeamLogoUrl(team.Team)}" alt="${team.Team} logo" class="team-logo-small">
+                        <span class="team-name">${team.Team}</span>
+                    </div>
+                </a>
             </td>
             <td>${team[sortKey].toFixed(2)}${sortKey === 'PercentageU21' ? '%' : ''}</td>
             <td>${team.LeaguePosition}</td>
@@ -71,11 +73,14 @@ function createTableBody(data, sortKey) {
     return html;
 }
 
-
 function getTeamLogoUrl(team) {
     if (!team) return 'team-logos/default_logo.webp';
     const cleanedTeam = team.replace(/[^a-z0-9]/gi, '_').toLowerCase();
     return `team-logos/${cleanedTeam}.webp`;
+}
+
+function getTeamPageUrl(teamName) {
+    return `team-roster.html?team=${encodeURIComponent(teamName)}`;
 }
 
 function setupTabs() {
