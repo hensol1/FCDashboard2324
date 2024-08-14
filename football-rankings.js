@@ -37,7 +37,7 @@ function displayFootballRankings() {
 
     Object.entries(statCategories).forEach(([category, stats]) => {
         let html = '<table class="compact-table">';
-        html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th><th>Matches</th>'; // Added Matches
+        html += '<tr><th>Rank</th><th>Player</th><th>Team</th><th>Position</th><th>Age</th><th>Matches</th>';
         stats.forEach(stat => {
             html += `<th class="sortable" data-stat="${stat}">${stat} ${getSortIndicator(stat)}</th>`;
         });
@@ -65,7 +65,7 @@ function displayFootballRankings() {
                 </td>
                 <td>${player.Position}</td>
                 <td>${player.Age}</td>
-                <td>${player.GM}</td>`; // Added Matches (GM)
+                <td>${player.GM}</td>`;
             stats.forEach(stat => {
                 html += `<td>${player[stat]}</td>`;
             });
@@ -138,10 +138,10 @@ function setupTabs() {
             document.getElementById(tabId).classList.add('active');
         });
     });
-        // Set the first tab (Passing) as active by default
+
+    // Set the first tab (Passing) as active by default
     tabs[0].classList.add('active');
     document.getElementById('passing').classList.add('active');
-
 }
 
 function populateClubFilter() {
