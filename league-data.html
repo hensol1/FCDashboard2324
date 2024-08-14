@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Player Availability and Training Missed</title>
+    <title>League Data - FCDashboard</title>
     <link rel="stylesheet" href="full-ranking.css">
 </head>
 <body>
-<header>
     <div class="header-container">
         <div class="logo-title">
-            <img src="logo.webp" alt="logo"/>
+            <img src="logo.webp" alt="FCDashboard Logo">
             <h1>FCDashboard</h1>
         </div>
         <div class="season-info">
             <span class="season-text">23/24 Season</span>
-            <img src="ipl.svg" alt="IPL logo" class="ipl-logo"/>
+            <img src="ipl.svg" alt="IPL logo" class="ipl-logo">
         </div>
         <nav>
             <ul>
@@ -27,26 +26,19 @@
             </ul>
         </nav>
     </div>
-</header>
 
-    <h1 class="title">Full Player Availability and Training Missed</h1>
+    <h1 class="title">League Data</h1>
 
     <div class="container">
         <div class="tabs">
-            <button class="tab-button active" data-tab="availability">Availability</button>
-            <button class="tab-button" data-tab="training-missed">Training Missed</button>
+            <button class="tab-button active" data-tab="average-age">Average Age</button>
+            <button class="tab-button" data-tab="u21-percentage">U21 Percentage</button>
         </div>
 
-        <div id="availability" class="tab-content active">
-            <div id="full-availability-content"></div>
-        </div>
-
-        <div id="training-missed" class="tab-content">
-            <div id="full-training-missed-content"></div>
-        </div>
+        <div id="average-age" class="tab-content active"></div>
+        <div id="u21-percentage" class="tab-content"></div>
     </div>
 
-    <script src="full-availability.js"></script>
+    <script src="league-data.js"></script>
 </body>
 </html>
-

@@ -270,6 +270,42 @@ tr:hover .player-cell .player-name {
     text-decoration: underline;
 }
 
+.sortable {
+    cursor: pointer;
+    user-select: none;
+}
 
+.sortable:hover {
+    background-color: #2980b9;
+}
 
+.sortable .header-text,
+.sortable .sort-indicator {
+    display: inline-block;
+}
 
+.sortable .sort-indicator {
+    margin-left: 5px;
+}
+
+.team-cell {
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.team-info {
+    display: flex;
+    align-items: center;
+}
+
+.team-logo-small {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.team-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
