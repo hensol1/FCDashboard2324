@@ -1,0 +1,204 @@
+{
+  "averageAge": [
+    {
+      "Team": "Maccabi Bnei Raina",
+      "AverageAge": 29.41
+    },
+    {
+      "Team": "Hapoel Haifa",
+      "AverageAge": 27.74
+    },
+    {
+      "Team": "Hapoel Be'er Sheva",
+      "AverageAge": 27.67
+    },
+    {
+      "Team": "Maccabi Haifa",
+      "AverageAge": 26.91
+    },
+    {
+      "Team": "Hapoel Hadera",
+      "AverageAge": 26.87
+    },
+    {
+      "Team": "Ashdod",
+      "AverageAge": 26.72
+    },
+    {
+      "Team": "Maccabi Tel Aviv",
+      "AverageAge": 26.7
+    },
+    {
+      "Team": "Beitar Jerusalem",
+      "AverageAge": 26.66
+    },
+    {
+      "Team": "Hapoel Petah Tikva",
+      "AverageAge": 26.39
+    },
+    {
+      "Team": "Hapoel Tel Aviv",
+      "AverageAge": 25.96
+    },
+    {
+      "Team": "Bnei Sakhnin",
+      "AverageAge": 25.17
+    },
+    {
+      "Team": "Maccabi Petah Tikva",
+      "AverageAge": 24.96
+    },
+    {
+      "Team": "Maccabi Netanya",
+      "AverageAge": 24.58
+    },
+    {
+      "Team": "Hapoel Jerusalem",
+      "AverageAge": 23.89
+    }
+  ],
+  "youngPlayerPercentage": [
+    {
+      "Team": "Maccabi Petah Tikva",
+      "PercentageU21": 32.42
+    },
+    {
+      "Team": "Hapoel Tel Aviv",
+      "PercentageU21": 20.41
+    },
+    {
+      "Team": "Hapoel Jerusalem",
+      "PercentageU21": 17.82
+    },
+    {
+      "Team": "Maccabi Netanya",
+      "PercentageU21": 16.68
+    },
+    {
+      "Team": "Maccabi Tel Aviv",
+      "PercentageU21": 14.85
+    },
+    {
+      "Team": "Hapoel Petah Tikva",
+      "PercentageU21": 13.47
+    },
+    {
+      "Team": "Bnei Sakhnin",
+      "PercentageU21": 12.66
+    },
+    {
+      "Team": "Hapoel Hadera",
+      "PercentageU21": 12.44
+    },
+    {
+      "Team": "Ashdod",
+      "PercentageU21": 12.44
+    },
+    {
+      "Team": "Beitar Jerusalem",
+      "PercentageU21": 12.24
+    },
+    {
+      "Team": "Maccabi Haifa",
+      "PercentageU21": 11.73
+    },
+    {
+      "Team": "Hapoel Haifa",
+      "PercentageU21": 9.69
+    },
+    {
+      "Team": "Hapoel Be'er Sheva",
+      "PercentageU21": 4.45
+    },
+    {
+      "Team": "Maccabi Bnei Raina",
+      "PercentageU21": 1.47
+    }
+  ],
+  "combinedData": [
+    {
+      "Team": "Maccabi Tel Aviv",
+      "AverageAge": 26.7,
+      "PercentageU21": 14.85,
+      "LeaguePosition": 1
+    },
+    {
+      "Team": "Maccabi Haifa",
+      "AverageAge": 26.91,
+      "PercentageU21": 11.73,
+      "LeaguePosition": 2
+    },
+    {
+      "Team": "Hapoel Be'er Sheva",
+      "AverageAge": 27.67,
+      "PercentageU21": 4.45,
+      "LeaguePosition": 3
+    },
+    {
+      "Team": "Hapoel Haifa",
+      "AverageAge": 27.74,
+      "PercentageU21": 9.69,
+      "LeaguePosition": 4
+    },
+    {
+      "Team": "Maccabi Bnei Raina",
+      "AverageAge": 29.41,
+      "PercentageU21": 1.47,
+      "LeaguePosition": 5
+    },
+    {
+      "Team": "Bnei Sakhnin",
+      "AverageAge": 25.17,
+      "PercentageU21": 12.66,
+      "LeaguePosition": 6
+    },
+    {
+      "Team": "Hapoel Jerusalem",
+      "AverageAge": 23.89,
+      "PercentageU21": 17.82,
+      "LeaguePosition": 7
+    },
+    {
+      "Team": "Maccabi Petah Tikva",
+      "AverageAge": 24.96,
+      "PercentageU21": 32.42,
+      "LeaguePosition": 8
+    },
+    {
+      "Team": "Maccabi Netanya",
+      "AverageAge": 24.58,
+      "PercentageU21": 16.68,
+      "LeaguePosition": 9
+    },
+    {
+      "Team": "Ashdod",
+      "AverageAge": 26.72,
+      "PercentageU21": 12.44,
+      "LeaguePosition": 10
+    },
+    {
+      "Team": "Beitar Jerusalem",
+      "AverageAge": 26.66,
+      "PercentageU21": 12.24,
+      "LeaguePosition": 11
+    },
+    {
+      "Team": "Hapoel Hadera",
+      "AverageAge": 26.87,
+      "PercentageU21": 12.44,
+      "LeaguePosition": 12
+    },
+    {
+      "Team": "Hapoel Tel Aviv",
+      "AverageAge": 25.96,
+      "PercentageU21": 20.41,
+      "LeaguePosition": 13
+    },
+    {
+      "Team": "Hapoel Petah Tikva",
+      "AverageAge": 26.39,
+      "PercentageU21": 13.47,
+      "LeaguePosition": 14
+    }
+  ]
+}
